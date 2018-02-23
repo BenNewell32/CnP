@@ -1,12 +1,11 @@
 import React from 'react';
 import { Component } from 'react';
-import { StyleSheet, Text, View, NavigatorIOS, ImageBackground } from 'react-native';
+import { StyleSheet, Image, Text, View, ImageBackground } from 'react-native';
 import { Button, Avatar} from 'react-native-elements'
-import Order from './src/Order.js'; 
-import LogIn from './src/LogIn.js'; 
+// import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
-let printout='';
-class Home extends Component<{}> {
+
+export default class LogIn extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -18,20 +17,14 @@ class Home extends Component<{}> {
         />
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Welcome to Chicken n Pickle'+printout}
+          title={''}
           buttonStyle={{backgroundColor: '#9EBA48'}}
         />
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Order Now'+printout}
+          title={'Register Now'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={
-            () => 
-            this.props.navigator.push({
-              title: 'Order',
-              component: Order,
-            })
-        }
+          onPress={() => console.log("User Registring")}
           buttonStyle={{
             backgroundColor: "#191919",
             width: 300,
@@ -46,17 +39,11 @@ class Home extends Component<{}> {
         </Text>
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Sign In'+printout}
+          title={'Sign In with Facebook'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={
-            () => 
-            this.props.navigator.push({
-              title: 'Sign In',
-              component: LogIn,
-            })
-          }
+          onPress={() => console.log("User signing in with Google")}
           buttonStyle={{
-            backgroundColor: "#191919",
+            backgroundColor: "#4267B2",
             width: 300,
             height: 45,
             borderColor: "transparent",
@@ -65,43 +52,6 @@ class Home extends Component<{}> {
           }}
         />
       </View>
-    );
-  }
-}
-
-class Title extends Component<{}>{
-  render(){
-    return(
-      <div>
-      <Text>
-        Chicken
-      </Text>
-      <Text>
-        N
-      </Text>
-      <Text>
-        Pickle
-      </Text>
-      </div>
-    )
-  }
-}
-
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <NavigatorIOS
-        barTintColor='white'
-        titleTextColor='#9EBA48'
-        // tintColor='#fff'
-        fontFamily='Helvetica'
-        fontSize='20'
-        style={styleshdr.container}
-        initialRoute={{
-          title: 'Chicken N Pickle',
-          component: Home,
-        }}>
-      </NavigatorIOS>
     );
   }
 }
@@ -115,13 +65,6 @@ const styles = StyleSheet.create({
     },
 });
 
-const styleshdr = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-
-    },
-});
 
 const styles2 = StyleSheet.create({
   container: {
