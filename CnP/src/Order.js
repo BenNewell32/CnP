@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react'
-import { Button, Avatar} from 'react-native-elements'
+import {Icon, Button, Avatar} from 'react-native-elements'
 import { StyleSheet, Image, View, TouchableHighlight, FlatList, Text, ImageBackground,} from 'react-native';
 import Navigation from "./Navigation.js"
 
@@ -13,9 +13,6 @@ export default class Order extends Component<{}> {
     return (
       <TouchableHighlight
         underlayColor='#dddddd'>
-        <View>
-          <Text>'test'</Text>
-        </View>
       </TouchableHighlight>
     );
     

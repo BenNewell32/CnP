@@ -1,43 +1,59 @@
 import React from 'react';
 import { Component } from 'react';
 import { StyleSheet, Image, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
-import { Button, Avatar} from 'react-native-elements'
+import {Icon, Button, Avatar} from 'react-native-elements'
 // import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-
+import SetLocation from './SetLocation.js'
+import WatchLocation from './WatchLocation.js'
 
 export default class LogIn extends React.Component {
   render() {
     return (
+        
       <View style={bar.container}>
-        <View style={menu.container}>
-        <Image
-        style={img.container}
-          source={require('./menu.svg')}
-        />
+        <View  style={menu.container}>
         <Text></Text>
         <TouchableOpacity onPress={this._onPressButton}>
-
-            <Text
-                style={menufont.container}
-            >
-                <Image
-                    style={img.container}
-                    source={require('./menu.svg')}
-                />
-                &nbsp;Account
-            </Text>
+            <Icon
+                name='navicon'
+                type='evilicon'
+                color='white'
+                underlayColor='white'
+                size={40}
+            />
         </TouchableOpacity>
         <Text></Text>
         <TouchableOpacity onPress={this._onPressButton}>
+        
+            <Icon
+                name='credit-card'
+                type='evilicon'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
             <Text
                 style={menufont.container}
             >
+            
                 Your Bill
             </Text>
         </TouchableOpacity>
         <Text></Text>
 
-        <TouchableOpacity onPress={this._onPressButton}>
+        <TouchableOpacity  onPress={this._onPressButton}>
+            <Icon 
+                name='local-dining'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
+            <Icon
+                name='local-bar'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
             <Text
                 style={menufont.container}
             >
@@ -47,6 +63,29 @@ export default class LogIn extends React.Component {
         <Text></Text>
 
         <TouchableOpacity onPress={this._onPressButton}>
+            <Icon
+                name='location'
+                type='evilicon'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
+            <Text
+                style={menufont.container}
+            >
+                Set Location
+            </Text>
+        </TouchableOpacity>
+        <Text></Text>
+
+        <TouchableOpacity onPress={this._onPressButton}>
+            <Icon
+                name='calendar'
+                type='evilicon'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
             <Text
                 style={menufont.container}
             >
@@ -56,6 +95,13 @@ export default class LogIn extends React.Component {
         <Text></Text>
 
         <TouchableOpacity onPress={this._onPressButton}>
+            <Icon
+                name='clock'
+                type='evilicon'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
             <Text
                 style={menufont.container}
             >
@@ -65,6 +111,13 @@ export default class LogIn extends React.Component {
         <Text></Text>
 
         <TouchableOpacity onPress={this._onPressButton}>
+            <Icon
+                name='sc-telegram'
+                type='evilicon'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
             <Text
                 style={menufont.container}
             >
@@ -74,13 +127,22 @@ export default class LogIn extends React.Component {
         <Text></Text>
 
         <TouchableOpacity onPress={this._onPressButton}>
+            <Icon
+                name='user'
+                type='evilicon'
+                color='#9EBA48'
+                underlayColor='white'
+                size={20}
+            />
             <Text
                 style={menufont.container}
             >
                 Log In
             </Text>
         </TouchableOpacity>
-        </View>        
+        </View>       
+        <WatchLocation>
+        </WatchLocation>
       </View>
     );
   }
@@ -89,8 +151,8 @@ export default class LogIn extends React.Component {
 const bar = StyleSheet.create({
     container: {
       height: "100%",
-      width: '20%',
-      marginRight: '80%',
+      width: 200,
+      marginRight: '60%',
       backgroundColor: '#191919',
       alignItems: 'center',
       justifyContent: 'center',
@@ -99,7 +161,7 @@ const bar = StyleSheet.create({
 
 const menu = StyleSheet.create({
 container: {
-    marginBottom: '350%',
+    marginBottom: '30%',
     backgroundColor: '#191919',
     alignItems: 'center',
     justifyContent: 'center',
