@@ -147,21 +147,20 @@ export default class LogIn extends React.Component {
                 Log In
             </Text>
         </TouchableOpacity>
+        </View>       
         <WatchLocation>
         </WatchLocation>
-        </View>       
       </View>
     );
   }
 }
 
 const bar = StyleSheet.create({
-    
     container: {
-      marginTop:'-10%',
       height: "100%",
       width: 200,
       marginRight: '60%',
+      marginTop: '30%',
       backgroundColor: '#191919',
       alignItems: 'center',
       justifyContent: 'center',
@@ -170,6 +169,7 @@ const bar = StyleSheet.create({
 
 const menu = StyleSheet.create({
 container: {
+    marginBottom: '-10%',
     backgroundColor: '#191919',
     alignItems: 'center',
     justifyContent: 'center',

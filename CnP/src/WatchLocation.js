@@ -4,6 +4,8 @@ import { StyleSheet, Image, Text, View, ImageBackground } from 'react-native';
 import { Button, Avatar} from 'react-native-elements'
 // import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
+let lat;
+let lng;
 
 class WatchLocation extends Component {
   constructor(props) {
@@ -24,6 +26,10 @@ class WatchLocation extends Component {
           longitude: position.coords.longitude,
           error: null,
         });
+        lat= this.state.latitude;
+        lng= this.state.longitude;
+        console.log("lat "+lat);
+        console.log("lng "+lng);
       },
       (error) => this.setState({ error: error.message }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },

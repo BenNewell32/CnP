@@ -10,6 +10,8 @@ https://davidwalsh.name/step-step-guide-stripe-payments-react
 /////////////
 https://www.raywenderlich.com/165140/react-native-tutorial-building-ios-android-apps-javascript
 
+https://facebook.github.io/react-native/docs/navigatorios.html
+
 ////////////
 //Long/Lat//
 ////////////
@@ -30,3 +32,9 @@ https://medium.com/the-react-native-log/implement-snapchat-like-swipe-navigation
 //Udemy
 ///////
 https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/content
+
+
+/////////
+//ICONS//
+/////////
+https://react-native-training.github.io/react-native-elements/docs/icon.html

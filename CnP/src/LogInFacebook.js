@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { Button, Avatar} from 'react-native-elements'
 
-export default class LogIn extends React.Component {
+export default class LogInFB extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -15,40 +15,10 @@ export default class LogIn extends React.Component {
         />
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Login'}
+          title={'facebook page!'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
         />
-        <Button
-          textStyle={{textAlign:'center'}}
-          title={'Register Now'}
-          buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={() => console.log("User Registring")}
-          buttonStyle={{
-            backgroundColor: "#191919",
-            width: 300,
-            height: 45,
-            borderColor: "transparent",
-            borderWidth: 0,
-            borderRadius: 5
-          }}
-        />
-        <Text>
-        {"\n"}
-        </Text>
-        <Button
-          textStyle={{textAlign:'center'}}
-          title={'Sign In With Facebook'}
-          buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={() => console.log("User signing in with FB")}
-          buttonStyle={{
-            backgroundColor: "#191919",
-            width: 300,
-            height: 45,
-            borderColor: "transparent",
-            borderWidth: 0,
-            borderRadius: 5
-          }}
-        />
+        
       </View>
     );
   }

@@ -1,13 +1,18 @@
 import React from 'react';
 import { Component } from 'react';
-import { StyleSheet, Image, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { Button, Avatar} from 'react-native-elements'
-// import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-import Register from './Register.js'
+import Navigation from './Navigation.js'
+import App from '../App.js'
+import YourBill from './YourBill.js'
+import FoodDrinks from './FoodDrinks.js'
+import Pickleball from './Pickleball.js'
+import Events from './Events.js'
+import AboutContact from './AboutContact.js'
+import SetLocation from './SetLocation.js'
+import LogOut from './LogOut.js'
 
-
-export default class LogIn extends Component<{}> {
-
+export default class Register extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -17,22 +22,10 @@ export default class LogIn extends Component<{}> {
           // https://www.facebook.com/chickennpickle/photos/a.851614384894316.1073741825.851613691561052/1074970642558688/?type=1&theater
           source={{uri: "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6"}}
         />
+        <Text/>
         <Button
           textStyle={{textAlign:'center'}}
-          title={''}
-          buttonStyle={{backgroundColor: '#9EBA48'}}
-        />
-        <Button
-          textStyle={{textAlign:'center'}}
-          title={'Register Now'}
-          buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={
-            () => 
-            this.props.navigator.push({
-              title: 'Register',
-              component: Register,
-            })
-          }
+          title={'Return Home'}
           buttonStyle={{
             backgroundColor: "#191919",
             width: 300,
@@ -41,23 +34,10 @@ export default class LogIn extends Component<{}> {
             borderWidth: 0,
             borderRadius: 5
           }}
-        />
-        <Text>
-        {"\n"}
-        </Text>
-        <Button
-          textStyle={{textAlign:'center'}}
-          title={'Sign In with Facebook'}
-          buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={() => console.log("User signing in with Google")}
-          buttonStyle={{
-            backgroundColor: "#4267B2",
-            width: 300,
-            height: 45,
-            borderColor: "transparent",
-            borderWidth: 0,
-            borderRadius: 5
-          }}
+          onPress={ 
+            () => 
+            this.props.navigator.popToTop()
+          }
         />
       </View>
     );

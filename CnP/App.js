@@ -24,7 +24,6 @@ class Home extends Component<{}> {
         <Button
           textStyle={{textAlign:'center'}}
           title={'Order Now'+printout}
-          buttonStyle={{backgroundColor: '#9EBA48'}}
           onPress={
             () => 
             this.props.navigator.push({
@@ -93,13 +92,14 @@ export default class App extends Component<{}> {
       <NavigatorIOS
         barTintColor='white'
         titleTextColor='#9EBA48'
+        navigationBarHidden='true'
         // tintColor='#fff'
         fontFamily='Helvetica'
         fontSize='20'
         style={styleshdr.container}
         initialRoute={{
           title: 'Chicken N Pickle',
-          component: Home,
+          component: Home, 
         }}>
       </NavigatorIOS>
     );
