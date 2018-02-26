@@ -1,9 +1,9 @@
-import React from 'react';
-import { Component } from 'react';
-import { StyleSheet, Image, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
+'use strict';
+
+import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
-// import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-import WatchLocation from './WatchLocation.js'
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
+import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
@@ -12,142 +12,234 @@ import Events from './Events.js'
 import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
+import WatchLocation from './WatchLocation.js'
+import Register from './Register.js'
+import LogIn from './LogIn.js'
 
-export default class LogIn extends React.Component {
+var test='test';
+export default class Order extends Component<{}> {
+
+  _keyExtractor = (item, index) => index;
+
+  _renderItem = (test) => {
+    return (
+      <TouchableHighlight
+        underlayColor='#dddddd'>
+      </TouchableHighlight>
+    );
+    
+  };
+
   render() {
     return (
-        
-      <View style={bar.container}>
-        <View  style={menu.container}>
-        <Text></Text>
-        <TouchableOpacity onPress={this._onPressButton}>
-            <Icon
-                name='navicon'
-                type='evilicon'
-                color='white'
-                underlayColor='white'
-                size={40}
+      <View style={styles.container}>
+        <View marginTop='0%'>
+          <Icon
+            name='menu'
+            color='black'
+            underlayColor='white'
+            size={20}
+          />
+          <Button
+              textStyle={{textAlign:'center'}}
+              title={ 'Home'}
+              buttonStyle={{
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={ 
+                () => 
+                this.props.navigator.popToTop()
+              }
             />
-        </TouchableOpacity>
-        <Text></Text>
-        <TouchableOpacity onPress={this._onPressButton}>
-        
             <Icon
                 name='credit-card'
                 type='evilicon'
-                color='#9EBA48'
+                color='Black'
                 underlayColor='white'
                 size={20}
             />
-            <Text
-                style={menufont.container}
-            >
-            
-                Your Bill
-            </Text>
-        </TouchableOpacity>
-        <Text></Text>
-
-        <TouchableOpacity  onPress={this._onPressButton}>
+            <Button
+              textStyle={{
+                textAlign:'center',
+                color: '#191919'
+                }}
+              title={'Your Bill'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Your Bill',
+                  component: YourBill,
+                })
+              }
+            />
             <Icon 
-                name='local-dining'
-                color='#9EBA48'
-                underlayColor='white'
-                size={20}
+              name='local-dining'
+              color='black'
+              underlayColor='white'
+              size={20}
             />
             <Icon
                 name='local-bar'
-                color='#9EBA48'
+                color='black'
                 underlayColor='white'
                 size={20}
             />
-            <Text
-                style={menufont.container}
-            >
-                Food/Drinks
-            </Text>
-        </TouchableOpacity>
-        <Text></Text>
-
-        <TouchableOpacity onPress={this._onPressButton}>
+            <Button
+              textStyle={{textAlign:'center'}}
+              title={'Order'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Food and Drinks',
+                  component: FoodDrinks,
+                })
+              }
+            />
             <Icon
-                name='location'
-                type='evilicon'
-                color='#9EBA48'
-                underlayColor='white'
-                size={20}
+              name='calendar'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={20}
             />
-            <Text
-                style={menufont.container}
-            >
-                Set Location
-            </Text>
-        </TouchableOpacity>
-        <Text></Text>
-
-        <TouchableOpacity onPress={this._onPressButton}>
+            <Button
+              textStyle={{textAlign:'center'}}
+              title={'Pickleball'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Pickleball',
+                  component: Pickleball,
+                })
+              }
+            />
             <Icon
-                name='calendar'
-                type='evilicon'
-                color='#9EBA48'
+                name='cake'
+                color='black'
                 underlayColor='white'
                 size={20}
             />
-            <Text
-                style={menufont.container}
-            >
-                Reservations
-            </Text>
-        </TouchableOpacity>
-        <Text></Text>
-
-        <TouchableOpacity onPress={this._onPressButton}>
+            <Button
+              textStyle={{textAlign:'center'}}
+              title={'Events'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Events',
+                  component: Events,
+                })
+              }
+            />
             <Icon
-                name='clock'
-                type='evilicon'
-                color='#9EBA48'
-                underlayColor='white'
-                size={20}
+              name='sc-telegram'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={20}
             />
-            <Text
-                style={menufont.container}
-            >
-                History
-            </Text>
-        </TouchableOpacity>
-        <Text></Text>
-
-        <TouchableOpacity onPress={this._onPressButton}>
-            <Icon
-                name='sc-telegram'
-                type='evilicon'
-                color='#9EBA48'
-                underlayColor='white'
-                size={20}
+            <Button
+              textStyle={{textAlign:'center'}}
+              title={'Contact Us'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Contact Us',
+                  component: AboutContact,
+                })
+              }
             />
-            <Text
-                style={menufont.container}
-            >
-                Contact Us
-            </Text>
-        </TouchableOpacity>
-        <Text></Text>
-
-        <TouchableOpacity onPress={this._onPressButton}>
             <Icon
                 name='user'
                 type='evilicon'
-                color='#9EBA48'
+                color='black'
                 underlayColor='white'
                 size={20}
             />
-            <Text
-                style={menufont.container}
-            >
-                Log In
-            </Text>
-        </TouchableOpacity>
-        </View>       
+            <Button
+              textStyle={{textAlign:'center'}}
+              title={'Log In'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'LogIn',
+                  component: LogIn,
+                })
+              }
+            />
+        <Icon
+          name='location'
+          type='evilicon'
+          color='black'
+          underlayColor='white'
+          size={20}
+        />
+        </View>
         <WatchLocation>
         </WatchLocation>
       </View>
@@ -155,44 +247,24 @@ export default class LogIn extends React.Component {
   }
 }
 
-const bar = StyleSheet.create({
-    container: {
-      height: "100%",
-      width: 200,
-      marginRight: '60%',
-      marginTop: '30%',
-      backgroundColor: '#191919',
-      alignItems: 'center',
-      justifyContent: 'center',
-      },
-  });
 
-const menu = StyleSheet.create({
-container: {
-    marginBottom: '-10%',
-    backgroundColor: '#191919',
-    alignItems: 'center',
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#9EBA48',
+    alignItems: 'left',
     justifyContent: 'center',
     },
-});  
-
-const img = StyleSheet.create({
-    container: {
-        height:20,
-        width: 20,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        },
-    });  
-    
-
-
-const menufont = StyleSheet.create({
-  container: {
-    backgroundColor: '#191919',
-    color: 'white',
-    fontSize: 20,
-    height:30,
-  },
 });
 
+
+const styles2 = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#9EBA48',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 25,
+    marginTop: '90%',
+  },
+});

@@ -42,7 +42,7 @@ class WatchLocation extends Component {
 
   render() {
     return (
-      <View style={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{alignItems: 'center', justifyContent: 'center' }}>
         <Text style={{color: 'white'}}>
           Latitude: 
         </Text>

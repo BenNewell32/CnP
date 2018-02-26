@@ -5,7 +5,6 @@ import { Button, Avatar} from 'react-native-elements'
 import Order from './src/Order.js'; 
 import LogIn from './src/LogIn.js'; 
 
-let printout='';
 class Home extends Component<{}> {
   render() {
     return (
@@ -18,12 +17,12 @@ class Home extends Component<{}> {
         />
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Welcome to Chicken n Pickle'+printout}
+          title={'Welcome to Chicken n Pickle'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
         />
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Order Now'+printout}
+          title={'Explore'}
           onPress={
             () => 
             this.props.navigator.push({
@@ -45,7 +44,7 @@ class Home extends Component<{}> {
         </Text>
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Sign In'+printout}
+          title={'Sign In'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
           onPress={
             () => 
