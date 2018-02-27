@@ -1,12 +1,41 @@
 import React from 'react';
 import { Component } from 'react';
-import { StyleSheet, Image, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Image, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
 import { Button, Avatar} from 'react-native-elements'
 // import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-import Register from './Register.js'
+import Register from './Register.js';
+import Expo from 'expo';
 
-
+const id= '1247004652109579';
+let name;
+let email;
+let img;
 export default class LogIn extends Component<{}> {
+
+
+  login = async () =>{
+    console.log('Facebook initiated');
+    const {type, token} = await Expo.Facebook.logInWithReadPermissionsAsync(id, {permissions: ['public_profile']})
+    
+    console.log(token);
+    console.log(type);
+    if (type === 'success'){
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,about,picture`
+      );
+        const json = await response.json();
+    console.log('USER INFO', json);
+    name = 'name: '+json.name+',';
+    email = 'email: '+json.email+',';
+    img = 'img: '+json.picture.data.url;
+    console.log(name);
+    console.log(email);
+    console.log(img);
+    }
+    else {
+      alert(type);
+    }
+  }
 
   render() {
     return (
@@ -49,7 +78,7 @@ export default class LogIn extends Component<{}> {
           textStyle={{textAlign:'center'}}
           title={'Sign In with Facebook'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={() => console.log("User signing in with Google")}
+          onPress={() => this.login()}
           buttonStyle={{
             backgroundColor: "#4267B2",
             width: 300,
@@ -59,6 +88,9 @@ export default class LogIn extends Component<{}> {
             borderRadius: 5
           }}
         />
+      <Text>
+        {name}{email}{img}
+      </Text>
       </View>
     );
   }
