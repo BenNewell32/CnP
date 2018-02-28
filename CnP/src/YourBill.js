@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#9EBA48',
-    alignItems: 'left',
+    alignItems: 'center',
     justifyContent: 'center',
     },
 });
