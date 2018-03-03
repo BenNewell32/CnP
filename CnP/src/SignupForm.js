@@ -91,6 +91,8 @@ export default class SignupForm extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+      marginTop: 40,
+      color: '#ffffff'
     },
     button: {
       borderRadius: 4,

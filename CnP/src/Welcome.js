@@ -4,8 +4,10 @@ import { StyleSheet,KeyboardAvoidingView, Text, View, TextInput,
         ImageBackground,
         Image,
         Dimensions,
-        TouchableHighlight } from 'react-native';
+        TouchableHighlight,
+        ScrollView } from 'react-native';
 import { Button, Avatar} from 'react-native-elements'
+import YourBill from './YourBill.js'
 
 let width = Dimensions.get('window').width;
 
@@ -13,8 +15,14 @@ export default class Welcome extends Component {
 
     render(){
         return(
-            <View>
-                <TouchableHighlight onPress={alert}>
+            <ScrollView>
+                <TouchableHighlight 
+                onPress={
+                    () =>
+                        this.props.navigator.push({
+                            title: 'Your Bill',
+                            component: YourBill,
+                        })}>
                     <ImageBackground source={require('../public/images/chicken.jpg')} style={styles.image} resizeMode='cover'>
                         <View style={{flex: 1, 
                         justifyContent:'center',
@@ -25,7 +33,7 @@ export default class Welcome extends Component {
                         </View>
                     </ImageBackground>
                 </TouchableHighlight>
-            </View>
+            </ScrollView>
             // <TouchableHighlight>
             //     <ImageBackground source={require('../public/images/chicken.jpg')} style={styles.container}> 
             //         <Text>Your Order</Text>

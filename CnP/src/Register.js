@@ -17,35 +17,31 @@ import Welcome from './Welcome.js'
 export default class Register extends React.Component {
   render() {
     return (
-      <View>
-        <Welcome/>
-        <Welcome/>
-      </View>
-      // <KeyboardAvoidingView style={styles.container}>
-      //   <Avatar
-      //     large
-      //     rounded
-      //     // https://www.facebook.com/chickennpickle/photos/a.851614384894316.1073741825.851613691561052/1074970642558688/?type=1&theater
-      //     source={{uri: "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6"}}
-      //   />
-      //   <SignupForm/>
-      //   <Button
-      //     textStyle={{textAlign:'center'}}
-      //     title={'Return Home'}
-      //     buttonStyle={{
-      //       backgroundColor: "#191919",
-      //       width: 300,
-      //       height: 45,
-      //       borderColor: "transparent",
-      //       borderWidth: 0,
-      //       borderRadius: 5
-      //     }}
-      //     onPress={ 
-      //       () => 
-      //       this.props.navigator.popToTop()
-      //     }
-      //   />
-      // </KeyboardAvoidingView>
+      <KeyboardAvoidingView style={styles.container}>
+        <Avatar
+          large
+          rounded
+          // https://www.facebook.com/chickennpickle/photos/a.851614384894316.1073741825.851613691561052/1074970642558688/?type=1&theater
+          source={{uri: "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6"}}
+        />
+        <SignupForm/>
+        <Button
+          textStyle={{textAlign:'center'}}
+          title={'Return Home'}
+          buttonStyle={{
+            backgroundColor: "#191919",
+            width: 300,
+            height: 45,
+            borderColor: "transparent",
+            borderWidth: 0,
+            borderRadius: 5
+          }}
+          onPress={ 
+            () => 
+            this.props.navigator.popToTop()
+          }
+        />
+      </KeyboardAvoidingView>
     );
   }
 }

@@ -1,8 +1,8 @@
 'use strict';
 
 import React, { Component } from 'react'
-import {Icon, Button, Avatar} from 'react-native-elements'
-import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
+import {Icon, Button, Avatar, Header} from 'react-native-elements'
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, ScrollView, Dimensions, Br} from 'react-native';
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -16,6 +16,8 @@ import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 
+let width = Dimensions.get('window').width;
+
 var test='test';
 export default class Order extends Component<{}> {
 
@@ -24,7 +26,7 @@ export default class Order extends Component<{}> {
   _renderItem = (test) => {
     return (
       <TouchableHighlight
-        underlayColor='#dddddd'>
+        underlayColor='white'>
       </TouchableHighlight>
     );
     
@@ -32,7 +34,156 @@ export default class Order extends Component<{}> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View backgroundColor='white'>
+          <Header
+            backgroundColor='white'
+            flexDirection='row'>
+            <TouchableHighlight
+              onPress={alert}>
+              <Icon
+                paddingTop={30}
+                name='menu'
+                color='#9EBA48'
+                underlayColor='white'
+                size={40}/>
+            </TouchableHighlight>
+          <Image source={require('../public/images/cnpheader.png')} resizeMode='contain' />
+            
+        </Header>
+       {/* <Button
+        backgroundColor='black'
+        onPress={alert}>
+          <Icon
+              name='menu'
+              color='white'
+              underlayColor='white'
+              size={80}
+                />
+        </Button> */}
+      <ScrollView>
+        <TouchableHighlight
+          style={styles.container}
+          onPress={
+            () =>
+              this.props.navigator.push({
+                title: 'Your Bill',
+                component: YourBill,
+              })}>
+          <ImageBackground source={require('../public/images/chicken.jpg')} style={styles.image} resizeMode='cover'>
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'stretch',
+              backgroundColor: 'rgba(0,0,0,0.5)'
+            }}>
+              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Your Orders</Text>
+            </View>
+          </ImageBackground>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.container}
+          onPress={
+            () =>
+              this.props.navigator.push({
+                title: 'Your Bill',
+                component: YourBill,
+              })}>
+          <ImageBackground source={require('../public/images/court.jpg')} style={styles.image} resizeMode='cover'>
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'stretch',
+              backgroundColor: 'rgba(0,0,0,0.5)'
+            }}>
+              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Pickleball</Text>
+            </View>
+          </ImageBackground>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.container}
+          onPress={
+            () =>
+              this.props.navigator.push({
+                title: 'Your Bill',
+                component: YourBill,
+              })}>
+          <ImageBackground source={require('../public/images/beer.jpg')} style={styles.image} resizeMode='cover'>
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'stretch',
+              backgroundColor: 'rgba(0,0,0,0.5)'
+            }}>
+              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Drinks</Text>
+            </View>
+          </ImageBackground>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.container}
+          onPress={
+            () =>
+              this.props.navigator.push({
+                title: 'Your Bill',
+                component: YourBill,
+              })}>
+          <ImageBackground source={require('../public/images/food.jpg')} style={styles.image} resizeMode='cover'>
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'stretch',
+              backgroundColor: 'rgba(0,0,0,0.5)'
+            }}>
+              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Food</Text>
+            </View>
+          </ImageBackground>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.container}
+          onPress={
+            () =>
+              this.props.navigator.push({
+                title: 'Your Bill',
+                component: YourBill,
+              })}>
+          <ImageBackground source={require('../public/images/events.jpg')} style={styles.image} resizeMode='cover'>
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'stretch',
+              backgroundColor: 'rgba(0,0,0,0.5)'
+            }}>
+              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Events</Text>
+            </View>
+          </ImageBackground>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.container}
+          onPress={
+            () =>
+              this.props.navigator.push({
+                title: 'Your Bill',
+                component: YourBill,
+              })}>
+          <ImageBackground source={require('../public/images/contactus.jpg')} style={styles.image} resizeMode='cover'>
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'stretch',
+              backgroundColor: 'rgba(0,0,0,0.5)'
+            }}>
+              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Contact Us</Text>
+            </View>
+          </ImageBackground>
+        </TouchableHighlight>
+      </ScrollView>
+      </View>
+       /* <View style={styles.container}>
         <View marginTop='0%'>
           <Icon
             name='menu'
@@ -40,24 +191,28 @@ export default class Order extends Component<{}> {
             underlayColor='white'
             size={20}
           />
-          <Button
-              textStyle={{textAlign:'center'}}
-              title={ 'Home'}
-              buttonStyle={{
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={ 
-                () => 
-                this.props.navigator.popToTop()
-              }
-            />
-            <Icon
+          <ScrollView>
+            <TouchableHighlight
+              onPress={
+                () =>
+                  this.props.navigator.push({
+                    title: 'Your Bill',
+                    component: YourBill,
+                  })}>
+              <ImageBackground source={require('../public/images/chicken.jpg')} style={styles.image} resizeMode='cover'>
+                <View style={{
+                  flex: 1,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignSelf: 'stretch',
+                  backgroundColor: 'rgba(0,0,0,0.5)'
+                }}>
+                  <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Your Orders</Text>
+                </View>
+              </ImageBackground>
+            </TouchableHighlight>
+          </ScrollView> */
+            /* <Icon
                 name='credit-card'
                 type='evilicon'
                 color='Black'
@@ -239,19 +394,33 @@ export default class Order extends Component<{}> {
         </View>
         <WatchLocation>
         </WatchLocation>
-      </View>
+      </View> */
     );
   }
-}
+} 
 
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    alignItems: 'center',
-    justifyContent: 'center',
+      width: width,
+      paddingTop: 2.5,
+      paddingBottom: 2.5,
+      flex: 1,
+      backgroundColor: '#9EBA48',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
+    image: {
+      alignSelf: 'stretch',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 100
+    },
+    textStyle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#ffffff'
+  }
 });
 
 
