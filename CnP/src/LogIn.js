@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { StyleSheet, Image, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
-import { Button, Avatar} from 'react-native-elements'
+import {Icon, Button, Avatar} from 'react-native-elements'
 // import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Register from './Register.js';
 import Expo from 'expo';
@@ -10,6 +10,9 @@ const id= '1247004652109579';
 let name;
 let email;
 let img;
+let user;
+let useremail;
+let userimg = "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6";
 export default class LogIn extends Component<{}> {
 
 
@@ -31,6 +34,10 @@ export default class LogIn extends Component<{}> {
     console.log(name);
     console.log(email);
     console.log(img);
+    user= name; 
+    useremail = email;
+    userimg = json.picture.data.url;
+    console.log("userimg!: ",userimg)
     }
     else {
       alert(type);
@@ -41,10 +48,9 @@ export default class LogIn extends Component<{}> {
     return (
       <View style={styles.container}>
         <Avatar
-          xlarge
+          large
           rounded
-          // https://www.facebook.com/chickennpickle/photos/a.851614384894316.1073741825.851613691561052/1074970642558688/?type=1&theater
-          source={{uri: "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6"}}
+          source={{url: userimg}}
         />
         <Button
           textStyle={{textAlign:'center'}}

@@ -3,6 +3,8 @@
 import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
 import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
+import MapView from 'react-native-maps';
+
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -14,12 +16,10 @@ import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
-import MapPage from './MapPage.js'
-
-
+import LogIn from './LogIn.js'
 
 var test='test';
-export default class Order extends Component<{}> {
+export default class MapPage extends Component<{}> {
 
   _keyExtractor = (item, index) => index;
 
@@ -35,6 +35,16 @@ export default class Order extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
+        <View style={map.container}>
+          <MapView
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+      </View >
         <View marginTop='0%'>
           <Icon
             name='menu'
@@ -67,7 +77,9 @@ export default class Order extends Component<{}> {
                 size={20}
             />
             <Button
-              textStyle={{textAlign:'center'}}
+              textStyle={{
+                textAlign:'center'
+              }}
               title={'Your Bill'}
               buttonStyle={{
                 position: 'fixed',
@@ -239,7 +251,8 @@ export default class Order extends Component<{}> {
           size={20}
         />
         <Button
-          textStyle={{textAlign:'center'}}
+          textStyle={{textAlign:'center',
+          color: '#9EBA48'}}
           title={'Location'}
           buttonStyle={{
             position: 'fixed',
@@ -259,10 +272,13 @@ export default class Order extends Component<{}> {
             })
           }
         />
+
         </View>
         <WatchLocation>
         </WatchLocation>
+
       </View>
+      
     );
   }
 }
@@ -289,97 +305,12 @@ const styles2 = StyleSheet.create({
   },
 });
 
-        // <TouchableOpacity  onPress={this._onPressButton}>
-        //     <Icon 
-        //         name='local-dining'
-        //         color='#9EBA48'
-        //         underlayColor='white'
-        //         size={20}
-        //     />
-        //     <Icon
-        //         name='local-bar'
-        //         color='#9EBA48'
-        //         underlayColor='white'
-        //         size={20}
-        //     />
-        //     <Text
-        //         style={menufont.container}
-        //     >
-        //         Food/Drinks
-        //     </Text>
-        // </TouchableOpacity>
-        // <Text></Text>
-
-        // <TouchableOpacity onPress={this._onPressButton}>
-        //     <Icon
-        //         name='location'
-        //         type='evilicon'
-        //         color='#9EBA48'
-        //         underlayColor='white'
-        //         size={20}
-        //     />
-        //     <Text
-        //         style={menufont.container}
-        //     >
-        //         Set Location
-        //     </Text>
-        // </TouchableOpacity>
-        // <Text></Text>
-
-        // <TouchableOpacity onPress={this._onPressButton}>
-        //     <Icon
-        //         name='calendar'
-        //         type='evilicon'
-        //         color='#9EBA48'
-        //         underlayColor='white'
-        //         size={20}
-        //     />
-        //     <Text
-        //         style={menufont.container}
-        //     >
-        //         Reservations
-        //     </Text>
-        // </TouchableOpacity>
-        // <Text></Text>
-
-        // <TouchableOpacity onPress={this._onPressButton}>
-        //     <Icon
-        //         name='clock'
-        //         type='evilicon'
-        //         color='#9EBA48'
-        //         underlayColor='white'
-        //         size={20}
-        //     />
-        //     <Text
-        //         style={menufont.container}
-        //     >
-        //         History
-        //     </Text>
-        // </TouchableOpacity>
-        // <Text></Text>
-
-        // <TouchableOpacity onPress={this._onPressButton}>
-        
-        //     <Text
-        //         style={menufont.container}
-        //     >
-        //         Contact Us
-        //     </Text>
-        // </TouchableOpacity>
-        // <Text></Text>
-
-        // <TouchableOpacity onPress={this._onPressButton}>
-        //     <Icon
-        //         name='user'
-        //         type='evilicon'
-        //         color='#9EBA48'
-        //         underlayColor='white'
-        //         size={20}
-        //     />
-        //     <Text
-        //         style={menufont.container}
-        //     >
-        //         Log In
-        //     </Text>
-        // </TouchableOpacity>
-        
+const map = StyleSheet.create({
+  container: {
+    marginBottom: '100%',
+    flex: 1,
+    backgroundColor: '#9EBA48',
+    alignItems: 'right',
+    justifyContent: 'center',
+    },
+});
