@@ -15,6 +15,7 @@ import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
+import MapPage from './MapPage.js'
 
 var test='test';
 export default class Order extends Component<{}> {
@@ -201,8 +202,8 @@ export default class Order extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Contact Us',
-                  component: AboutContact,
+                  title: 'MapPage',
+                  component: MapPage,
                 })
               }
             />

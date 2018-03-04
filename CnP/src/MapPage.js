@@ -1,10 +1,8 @@
 'use strict';
 
 import React, { Component } from 'react'
-import {Icon, Button, Avatar} from 'react-native-elements'
-import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
-import MapView from 'react-native-maps';
-
+import {Icon, Button, Avatar, Header} from 'react-native-elements'
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, ScrollView, Dimensions, Br} from 'react-native';
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -17,16 +15,20 @@ import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
+import MapPage from './MapPage.js'
+
+
+let width = Dimensions.get('window').width;
 
 var test='test';
-export default class MapPage extends Component<{}> {
+export default class Order extends Component<{}> {
 
   _keyExtractor = (item, index) => index;
 
   _renderItem = (test) => {
     return (
       <TouchableHighlight
-        underlayColor='#dddddd'>
+        underlayColor='white'>
       </TouchableHighlight>
     );
     
@@ -34,263 +36,78 @@ export default class MapPage extends Component<{}> {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={map.container}>
-          <MapView
-          initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        />
-      </View >
-        <View marginTop='0%'>
-          <Icon
-            name='menu'
-            color='black'
-            underlayColor='white'
-            size={20}
-          />
-          <Button
-              textStyle={{textAlign:'center'}}
-              title={ 'Home'}
-              buttonStyle={{
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={ 
-                () => 
-                this.props.navigator.popToTop()
-              }
-            />
-            <Icon
-                name='credit-card'
-                type='evilicon'
-                color='Black'
+      <View backgroundColor='white'>
+          <Header
+            backgroundColor='white'
+            flexDirection='row'>
+            <TouchableOpacity
+              onPress={alert}>
+              <Icon
+                paddingTop={30}
+                name='menu'
+                color='#9EBA48'
                 underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{
-                textAlign:'center'
-              }}
-              title={'Your Bill'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Your Bill',
-                  component: YourBill,
-                })
-              }
-            />
-            <Icon 
-              name='local-dining'
-              color='black'
-              underlayColor='white'
-              size={20}
-            />
-            <Icon
-                name='local-bar'
-                color='black'
-                underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Order'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
-                })
-              }
-            />
-            <Icon
-              name='calendar'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Pickleball'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Pickleball',
-                  component: Pickleball,
-                })
-              }
-            />
-            <Icon
-                name='cake'
-                color='black'
-                underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Events'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Events',
-                  component: Events,
-                })
-              }
-            />
-            <Icon
-              name='sc-telegram'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Contact Us'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Contact Us',
-                  component: AboutContact,
-                })
-              }
-            />
-            <Icon
-                name='user'
-                type='evilicon'
-                color='black'
-                underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Log In'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'LogIn',
-                  component: LogIn,
-                })
-              }
-            />
-        <Icon
-          name='location'
-          type='evilicon'
-          color='black'
-          underlayColor='white'
-          size={20}
-        />
-        <Button
-          textStyle={{textAlign:'center',
-          color: '#9EBA48'}}
-          title={'Location'}
-          buttonStyle={{
-            position: 'fixed',
-            marginTop:'5%',
-            backgroundColor: "#191919",
-            width: 100,
-            height: 45,
-            borderColor: "transparent",
-            borderWidth: 0,
-            borderRadius: 5
-          }}
-          onPress={
-            () => 
-            this.props.navigator.push({
-              title: 'MapPage',
-              component: MapPage,
-            })
-          }
-        />
-
-        </View>
-        <WatchLocation>
-        </WatchLocation>
-
+                size={30}/>
+            </TouchableOpacity>
+            <Image
+          style={{marginRight: '20%', width: 200, height: 60}}
+          source={{uri: 'http://cdn.cybergolf.com/images/1844/Chicken-n-Pickle-2.jpg'}}
+        />          
+        </Header>
+      <ScrollView>
+      <Button
+          style={styles.table1}
+        >
+            Table 1
+        </Button>
+        <TouchableOpacity
+          style={styles.container}
+          // onPress={
+          //   () =>
+          //     this.props.navigator.push({
+          //       title: 'Your Bill',
+          //       component: YourBill,
+          //     })}
+          >
+          <Image source={require('../public/images/floorplan.png')} style={styles.image} resizeMode='cover'>
+          </Image>
+          
+        </TouchableOpacity>
+        
+        
+      </ScrollView>
       </View>
-      
     );
   }
-}
+} 
 
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    alignItems: 'left',
-    justifyContent: 'center',
+      width: width,
+      paddingTop: 2.5,
+      paddingBottom: 2.5,
+      flex: 1,
+      backgroundColor: '#9EBA48',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
+  image: {
+      alignSelf: 'stretch',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 400
+    },
+  textStyle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#ffffff'
+  },
+  table1: {
+    position: 'absolute',
+    zindex: '-999',
+    fontSize:30
+  }
 });
 
 
@@ -303,14 +120,4 @@ const styles2 = StyleSheet.create({
     fontSize: 25,
     marginTop: '90%',
   },
-});
-
-const map = StyleSheet.create({
-  container: {
-    marginBottom: '100%',
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    alignItems: 'right',
-    justifyContent: 'center',
-    },
 });
