@@ -1,272 +1,89 @@
 'use strict';
 
 import React, { Component } from 'react'
-import {Icon, Button, Avatar} from 'react-native-elements'
-import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
+import {Avatar} from 'react-native-elements'
+import { StyleSheet, ScrollView, Image, View, TouchableHighlight, Dimensions, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
 import Navigation from "./Navigation.js"
+import Navbar from "./Navbar.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
 import Pickleball from './Pickleball.js'
-import Events from './Events.js'
 import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
+import EventsComponent from './EventsComponent.js'
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Content, Card, CardItem, Thumbnail  } from 'native-base'
+let width = Dimensions.get('window').width;
 
-var test='test';
-export default class Order extends Component<{}> {
+export default class Events extends Component<{}>{
 
-  _keyExtractor = (item, index) => index;
-
-  _renderItem = (test) => {
-    return (
-      <TouchableHighlight
-        underlayColor='#dddddd'>
-      </TouchableHighlight>
-    );
-    
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <View marginTop='0%'>
-          <Icon
-            name='menu'
-            color='black'
-            underlayColor='white'
-            size={20}
-          />
-          <Button
-              textStyle={{textAlign:'center'}}
-              title={ 'Home'}
-              buttonStyle={{
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={ 
-                () => 
-                this.props.navigator.popToTop()
-              }
-            />
-            <Icon
-                name='credit-card'
-                type='evilicon'
-                color='Black'
-                underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{
-                textAlign:'center',
-                }}
-              title={'Your Bill'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Your Bill',
-                  component: YourBill,
-                })
-              }
-            />
-            <Icon 
-              name='local-dining'
-              color='black'
-              underlayColor='white'
-              size={20}
-            />
-            <Icon
-                name='local-bar'
-                color='black'
-                underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Order'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
-                })
-              }
-            />
-            <Icon
-              name='calendar'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Pickleball'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Pickleball',
-                  component: Pickleball,
-                })
-              }
-            />
-            <Icon
-                name='cake'
-                color='black'
-                underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{
-                  textAlign:'center',
-                  color: '#9EBA48'
-                }}
-              title={'Events'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Events',
-                  component: Events,
-                })
-              }
-            />
-            <Icon
-              name='sc-telegram'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Contact Us'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Contact Us',
-                  component: AboutContact,
-                })
-              }
-            />
-            <Icon
-                name='user'
-                type='evilicon'
-                color='black'
-                underlayColor='white'
-                size={20}
-            />
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={'Log In'}
-              buttonStyle={{
-                position: 'fixed',
-                marginTop:'5%',
-                backgroundColor: "#191919",
-                width: 100,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'LogIn',
-                  component: LogIn,
-                })
-              }
-            />
-        <Icon
-          name='location'
-          type='evilicon'
-          color='black'
-          underlayColor='white'
-          size={20}
-        />
-        </View>
-        <WatchLocation>
-        </WatchLocation>
-      </View>
-    );
-  }
+ render()  {
+   return (
+     <View>
+    <Navbar navigator={this.props.navigator}/>
+       <ScrollView 
+       marginTop={50}>
+         <EventsComponent
+         eventName={'Comedy Show'}
+         date={'March 9, 2018\n8:00 PM - 11:00 PM CST'}
+         thumbnailImage={require('../public/images/comedyShow.png')}
+         bigImage={require('../public/images/comedyShow.png')}
+         description={`Kick off the weekend with a night full of laughter from some of Kansas City's best comedians! 
+Three of our local comedians featured in the KC Comedy Festival will be performing some of their best stand-up! 
+Space is limited so don't wait to secure your seat! 
+The show starts at 8 pm on the rooftop.
+This event is indoors with food and drinks available from the rooftop. 
+Must be 21(+).Tickets are $5 each, we will have walk-in space as well.
+Drink Specials:
+$4 wells
+$3 MillerHigh Life
+$4 KC Pils
+$5 Tank 7`}/>
+       <EventsComponent
+         eventName={'Snake Saturday'}
+         date={'Mar 10, 2018\n8:00am - 3:00pm'}
+         thumbnailImage={require('../public/images/snakesaturday.png')}
+         bigImage={require('../public/images/snakesaturday.png')}
+         description={`We will be open 8am-3pm for Snake Saturday. No Pickleball until 7pm.
+General Admission- $10
+VIP- $25`}/>
+       <EventsComponent
+         eventName={'March Basketball Tournament'}
+         date={'Mar 11 - Apr 2, 2018\n5:00pm - 7:00pm'}
+         thumbnailImage={require('../public/images/marchbasketball.png')}
+         bigImage={require('../public/images/marchbasketball.png')}
+         description={``} />
+       <EventsComponent
+         eventName={'Open Mic Night-Comedy'}
+         date={'Mar 11, 2018\n5:00pm - 10:00pm'}
+         thumbnailImage={require('../public/images/openMic.png')}
+         bigImage={require('../public/images/openMic.png')}
+         description={``} />
+       <EventsComponent
+         eventName={'Three Drink Minimum Concert'}
+         date={'Mar 24, 2018\n7:30pm'}
+         thumbnailImage={require('../public/images/snakesaturday.png')}
+         bigImage={require('../public/images/snakesaturday.png')}
+         description={``} />
+       <EventsComponent
+         eventName={'Pickleball Tournament'}
+         date={''}
+         thumbnailImage={require('../public/images/snakesaturday.png')}
+         bigImage={require('../public/images/snakesaturday.png')}
+         description={``} />
+       </ScrollView>
+       </View>
+   );
+ }
 }
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    alignItems: 'left',
-    justifyContent: 'center',
-    },
-});
-
-
-const styles2 = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 25,
-    marginTop: '90%',
-  },
-});
+ container: {
+   flex: 0,
+   backgroundColor: 'tomato'
+ }
+})

@@ -23,159 +23,248 @@ let width = Dimensions.get('window').width;
 var test='test';
 export default class Order extends Component<{}> {
 
-  _keyExtractor = (item, index) => index;
-
-  _renderItem = (test) => {
-    return (
-      <TouchableHighlight
-        underlayColor='white'>
-      </TouchableHighlight>
-    );
-    
-  };
 
   render() {
     return (
       <View backgroundColor='white'>
-          <Header
-            backgroundColor='white'
-            flexDirection='row'>
-            <TouchableOpacity
-              onPress={alert}>
-              <Icon
-                paddingTop={30}
-                name='menu'
-                color='#9EBA48'
-                underlayColor='white'
-                size={30}/>
-            </TouchableOpacity>
-            <Image
-          style={{marginRight: '20%', width: 200, height: 60}}
-          source={{uri: 'http://cdn.cybergolf.com/images/1844/Chicken-n-Pickle-2.jpg'}}
-        />          
-        </Header>
-      <ScrollView>
-        <TouchableOpacity
-          style={styles.container}
-          onPress={
-            () =>
-              this.props.navigator.push({
-                title: 'Your Bill',
-                component: YourBill,
-              })}>
-          <ImageBackground source={require('../public/images/chicken.jpg')} style={styles.image} resizeMode='cover'>
-            <View style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'stretch',
-              backgroundColor: 'rgba(0,0,0,0.5)'
-            }}>
-              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Your Orders</Text>
-            </View>
-          </ImageBackground>
-        </TouchableOpacity>
-        <TouchableHighlight
-          style={styles.container}
-          onPress={
-            () =>
-              this.props.navigator.push({
-                title: 'Your Bill',
-                component: YourBill,
-              })}>
-          <ImageBackground source={require('../public/images/court.jpg')} style={styles.image} resizeMode='cover'>
-            <View style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'stretch',
-              backgroundColor: 'rgba(0,0,0,0.5)'
-            }}>
-              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Pickleball</Text>
-            </View>
-          </ImageBackground>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.container}
-          onPress={
-            () =>
-              this.props.navigator.push({
-                title: 'Your Bill',
-                component: YourBill,
-              })}>
-          <ImageBackground source={require('../public/images/beer.jpg')} style={styles.image} resizeMode='cover'>
-            <View style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'stretch',
-              backgroundColor: 'rgba(0,0,0,0.5)'
-            }}>
-              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Drinks</Text>
-            </View>
-          </ImageBackground>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.container}
-          onPress={
-            () =>
-              this.props.navigator.push({
-                title: 'Your Bill',
-                component: YourBill,
-              })}>
-          <ImageBackground source={require('../public/images/food.jpg')} style={styles.image} resizeMode='cover'>
-            <View style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'stretch',
-              backgroundColor: 'rgba(0,0,0,0.5)'
-            }}>
-              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Food</Text>
-            </View>
-          </ImageBackground>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.container}
-          onPress={
-            () =>
-              this.props.navigator.push({
-                title: 'Your Bill',
-                component: YourBill,
-              })}>
-          <ImageBackground source={require('../public/images/events.jpg')} style={styles.image} resizeMode='cover'>
-            <View style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'stretch',
-              backgroundColor: 'rgba(0,0,0,0.5)'
-            }}>
-              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Events</Text>
-            </View>
-          </ImageBackground>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.container}
-          onPress={
-            () =>
-              this.props.navigator.push({
-                title: 'MapPage',
-                component: MapPage,
-              })}>
-          <ImageBackground source={require('../public/images/contactus.jpg')} style={styles.image} resizeMode='cover'>
-            <View style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              alignSelf: 'stretch',
-              backgroundColor: 'rgba(0,0,0,0.5)'
-            }}>
-              <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Contact Us</Text>
-            </View>
-          </ImageBackground>
-        </TouchableHighlight>
-      </ScrollView>
+      <WatchLocation/>
+        <View style={{ flexDirection: 'row', backgroundColor: '#9EBA48'}}>
+          <View style={{width: '100%', height: 25, backgroundColor: '#9EBA48'}} />
+        </View>
+        <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row', backgroundColor: '#9EBA48'}}>
+          <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='user'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'LogIn',
+                  component: LogIn,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='credit-card'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Your Bill',
+                  component: YourBill,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon 
+              name='local-dining'
+              color='black'
+              underlayColor='white'
+              size={30}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Food and Drinks',
+                  component: FoodDrinks,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='local-bar'
+              color='black'
+              underlayColor='white'
+              size={30}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Food and Drinks',
+                  component: FoodDrinks,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='trophy'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Your Bill',
+                  component: YourBill,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='calendar'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Food and Drinks',
+                  component: FoodDrinks,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='sc-telegram'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Food and Drinks',
+                  component: FoodDrinks,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='location'
+              type='evilicon'
+              color='black'
+              underlayColor='white'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'MapPage',
+                  component: MapPage,
+                })
+              }
+            />
+          </View>
+          <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
+          </View>
+        </View>
+        <ScrollView>
+          <TouchableOpacity
+            style={styles.container}
+            onPress={
+              () =>
+                this.props.navigator.push({
+                  title: 'FoodDrinks',
+                  component: FoodDrinks,
+                })}>
+            <ImageBackground source={require('../public/images/food.jpg')} style={styles.image} resizeMode='cover'>
+              <View style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'stretch',
+                backgroundColor: 'rgba(0,0,0,0.5)'
+              }}>
+                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Food</Text>
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.container}
+            onPress={
+              () =>
+                this.props.navigator.push({
+                  title: 'FoodDrinks',
+                  component: FoodDrinks,
+                })}>
+            <ImageBackground source={require('../public/images/beer.jpg')} style={styles.image} resizeMode='cover'>
+              <View style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'stretch',
+                backgroundColor: 'rgba(0,0,0,0.5)'
+              }}>
+                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Drinks</Text>
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.container}
+            onPress={
+              () =>
+                this.props.navigator.push({
+                  title: 'Pickleball',
+                  component: Pickleball,
+                })}>
+            <ImageBackground source={require('../public/images/court.jpg')} style={styles.image} resizeMode='cover'>
+              <View style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'stretch',
+                backgroundColor: 'rgba(0,0,0,0.5)'
+              }}>
+                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Pickleball</Text>
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.container}
+            onPress={
+              () =>
+                this.props.navigator.push({
+                  title: 'Events',
+                  component: Events,
+                })}>
+            <ImageBackground source={require('../public/images/events.jpg')} style={styles.image} resizeMode='cover'>
+              <View style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'stretch',
+                backgroundColor: 'rgba(0,0,0,0.5)'
+              }}>
+                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Events</Text>
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.container}
+            onPress={
+              () =>
+                this.props.navigator.push({
+                  title: 'MapPage',
+                  component: MapPage,
+                })}>
+            <ImageBackground source={require('../public/images/contactus.jpg')} style={styles.image} resizeMode='cover'>
+              <View style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignSelf: 'stretch',
+                backgroundColor: 'rgba(0,0,0,0.5)'
+              }}>
+                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Contact Us</Text>
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
     );
   }
@@ -196,7 +285,7 @@ const styles = StyleSheet.create({
       alignSelf: 'stretch',
       justifyContent: 'center',
       alignItems: 'center',
-      height: 100
+      height: 200
     },
     textStyle: {
     fontSize: 30,
@@ -213,6 +302,6 @@ const styles2 = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 25,
-    marginTop: '90%',
+    // marginTop: '90%',
   },
 });

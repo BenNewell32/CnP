@@ -1,8 +1,6 @@
-'use strict';
-
 import React, { Component } from 'react'
-import {Icon, Button, Avatar} from 'react-native-elements'
-import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
+import {Icon, Button, Avatar, Header} from 'react-native-elements'
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, ScrollView, Dimensions, NavigatorIOS} from 'react-native';
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -17,23 +15,13 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 
-var test='test';
-export default class Order extends Component<{}> {
 
-  _keyExtractor = (item, index) => index;
+export default class Navbar extends Component<{}> {
 
-  _renderItem = (test) => {
-    return (
-      <TouchableHighlight
-        underlayColor='#dddddd'>
-      </TouchableHighlight>
-    );
-    
-  };
-
-  render() {
-    return (
-      <View backgroundColor='white'>
+    render() {
+      return (
+<View backgroundColor='white'>
+      {/* <WatchLocation/> */}
         <View style={{ flexDirection: 'row', backgroundColor: '#9EBA48'}}>
           <View style={{width: '100%', height: 25, backgroundColor: '#9EBA48'}} />
         </View>
@@ -128,8 +116,8 @@ export default class Order extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'Events',
+                  component: Events,
                 })
               }
             />
@@ -169,29 +157,7 @@ export default class Order extends Component<{}> {
           <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
           </View>
         </View>
-      </View>
-    );
-  }
-}
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    // alignItems: 'left',
-    justifyContent: 'center',
-    },
-});
-
-
-const styles2 = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 25,
-    marginTop: '90%',
-  },
-});
+        </View>
+        )
+        }
+        }

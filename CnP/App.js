@@ -91,7 +91,7 @@ export default class App extends Component<{}> {
       <NavigatorIOS
         barTintColor='white'
         titleTextColor='#9EBA48'
-        navigationBarHidden='true'
+        navigationBarHidden= {true}
         // tintColor='#fff'
         fontFamily='Helvetica'
         fontSize='20'
