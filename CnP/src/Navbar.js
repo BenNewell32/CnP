@@ -23,6 +23,16 @@ export default class Navbar extends Component<{}> {
 <View backgroundColor='white'>
       {/* <WatchLocation/> */}
         <View style={{ flexDirection: 'row', backgroundColor: '#9EBA48'}}>
+          <View style={{alignItems: 'center', width: '100%', height: 60, backgroundColor: '#9EBA48'}} >
+            <Text>
+            </Text>
+            <Text>
+            </Text>
+            <Image
+              style={{alignItems: 'center', height:'40%',width: '40%'}}
+              source={require('../public/images/cnpheader.png')}
+            />
+          </View>
           <View style={{width: '100%', height: 25, backgroundColor: '#9EBA48'}} />
         </View>
         <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row', backgroundColor: '#9EBA48'}}>

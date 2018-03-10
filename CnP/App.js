@@ -17,7 +17,7 @@ class Home extends Component<{}> {
         />
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Welcome to Chicken n Pickle'}
+          title={'Welcome to Pickle N Chicken'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
         />
         <Button

@@ -9,7 +9,6 @@ import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
-import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
@@ -18,7 +17,7 @@ import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 
 var test='test';
-export default class Order extends Component<{}> {
+export default class AboutContact extends Component<{}> {
 
   _keyExtractor = (item, index) => index;
 

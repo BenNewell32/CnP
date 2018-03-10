@@ -6,7 +6,6 @@ import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
-import FoodDrinks from './FoodDrinks.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
 import AboutContact from './AboutContact.js'
@@ -17,7 +16,7 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import Navbar from './Navbar.js'
 
-export default class Food extends Component {
+export default class FoodDrinks extends Component {
   
   constructor(props) {
     super(props);
