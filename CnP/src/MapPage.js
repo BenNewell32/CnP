@@ -29,91 +29,24 @@ export default class MapPage extends Component<{}> {
   render()  {
     return (
       <View>
-     <Navbar navigator={this.props.navigator}/>
-     <MapView
-            style={styles.map}
-            showsUserLocation={ true }
-            initialRegion={{
-              latitude: 39.1400216,
-              longitude: -94.5799362,
-              latitudeDelta: 0.00522,
-              longitudeDelta: 0.00521,
-            }}
-  
-          >
-          
-            <Button
-              textStyle={{textAlign:'center'}}
-              title={ 'Home'}
-              buttonStyle={{
-                marginTop:'90%',
-                backgroundColor: "#191919",
-                width: 50,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={ 
-                () => 
-                this.props.navigator.popToTop()
-              }
-            />
-            <Button
-              textStyle={{
-                textAlign:'center',
-                justifyContent:'center'
-              }}
-              title={'Directions'}
-              buttonStyle={{
-                marginTop:'90%',
-                backgroundColor: "#191919",
-                width: 50,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
-              onPress={() => 
-                Linking.openURL('https://maps.google.com?q=Chicken+N+Pickle+1761+Burlington+St.+North+Kansas+City,+MO+64116')
-              }
-              />
-              <Button
-                textStyle={{
-                  textAlign:'left',
-                  justifyContent:'left'
-                }}
-                title='phone'
-                buttonStyle={{
-                  marginTop:'50%',
-                  backgroundColor: "#191919",
-                  width: 50,
-                  height:45,
-                  borderColor: "transparent",
-                  borderWidth: 0,
-                  borderRadius: 5
-                }}
-                onPress={() => 
-                  Linking.openURL('tel:7856335715')
-                }
-              />
-          </MapView>      
-        </View>
+        <WatchLocation/>
+        <Navbar navigator={this.props.navigator}/>
+      </View>
     );
   }
 } 
 
 
-const styles = StyleSheet.create({
+// const styles = StyleSheet.create({
 
-  map: {
-    position: 'relative',
-    // zindex: '-999',
-    // left: 0,
-    // right: 0,
-    top: 50,
-     bottom: 0
-  }
-});
+//   map: {
+//     position: 'relative',
+//     // zindex: '-999',
+//     // left: 0,
+//     // right: 0,
+//     top: 50,
+//      bottom: 0
+//   }
+// });
 
 

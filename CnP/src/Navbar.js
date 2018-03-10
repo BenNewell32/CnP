@@ -7,13 +7,14 @@ import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
-import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
+import AboutContact from './AboutContact.js'
+import Order from './Order.js'
 
 
 export default class Navbar extends Component<{}> {
@@ -36,9 +37,23 @@ export default class Navbar extends Component<{}> {
           <View style={{width: '100%', height: 25, backgroundColor: '#9EBA48'}} />
         </View>
         <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row', backgroundColor: '#9EBA48'}}>
-          <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
+            <Icon
+              name='navicon'
+              type='evilicon'
+              color='white'
+              underlayColor='white'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Order',
+                  component: Order,
+                })
+              }
+            />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='user'
               type='evilicon'
@@ -54,7 +69,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='credit-card'
               type='evilicon'
@@ -70,7 +85,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon 
               name='local-dining'
               color='black'
@@ -85,7 +100,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='local-bar'
               color='black'
@@ -100,7 +115,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='trophy'
               type='evilicon'
@@ -116,7 +131,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='calendar'
               type='evilicon'
@@ -132,7 +147,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='sc-telegram'
               type='evilicon'
@@ -142,13 +157,13 @@ export default class Navbar extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'AboutContact',
+                  component: AboutContact,
                 })
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='location'
               type='evilicon'
