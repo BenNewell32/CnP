@@ -38,7 +38,6 @@ export default class MapPage extends Component<{}> {
 
 
 // const styles = StyleSheet.create({
-
 //   map: {
 //     position: 'relative',
 //     // zindex: '-999',
