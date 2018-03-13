@@ -19,7 +19,9 @@ import EventsComponent from './EventsComponent.js'
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Content, Card, CardItem, Thumbnail  } from 'native-base'
 let width = Dimensions.get('window').width;
 
+
 export default class Events extends Component<{}>{
+
 
  render()  {
    return (

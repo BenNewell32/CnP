@@ -17,24 +17,18 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 import Navbar from './Navbar.js'
+import { Container, Header, Left, Body, Right, Title, Content, Card, CardItem, Thumbnail } from 'native-base'
 
 let pageName='About / Contact';
 export default class AboutContact extends Component<{}> {
 
   render() {
     return (
-      <View>
-        <View>
-          <Navbar
-            pageName={pageName}
-            navigator={this.props.navigator}
-          />
-        </View>
-        <View>
-        <Text style={{marginTop: 50}} >
-          Contact Us
-        </Text>
-        </View>
+       <Container>
+         <Navbar navigator={this.props.navigator} />
+         <Body marginTop={100}>
+           <Title>Contact Us</Title>
+        </Body>
         <View style={{marginTop: 50, flexDirection: 'row'}} >
         <MapView
             style={styles.map}
@@ -72,8 +66,8 @@ export default class AboutContact extends Component<{}> {
               </Text>
               <Button
                 textStyle={{
-                  textAlign:'left',
-                  justifyContent:'left'
+                  textAlign:'center',
+                  justifyContent:'center'
                 }}
                 title='phone'
                 buttonStyle={{
@@ -87,7 +81,7 @@ export default class AboutContact extends Component<{}> {
                 }
               />
           </View>
-      </View>
+      </Container>
     );
   }
 }
@@ -105,5 +99,16 @@ const styles = StyleSheet.create({
      bottom: 0,
      height: 300,
      width: '100%'
+  },
+  contactText: {
+    position: 'relative',
+    // zindex: '-999',
+    left: 0,
+    right: 0,
+    top: 50,
+    bottom: 200,
+    bottom: 0,
+    height: 300,
+    width: '100%'
   }
 });
