@@ -14,6 +14,7 @@ import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
+import Drinks from './Drinks.js'
 
 var test='test';
 export default class Navigation extends Component<{}> {
@@ -86,11 +87,33 @@ export default class Navigation extends Component<{}> {
                 })
               }
             />
+            
             <Icon 
               name='local-dining'
               color='black'
               underlayColor='white'
               size={20}
+            />
+            <Button
+              textStyle={{textAlign:'center'}}
+              title={'Order'}
+              buttonStyle={{
+                position: 'fixed',
+                marginTop:'5%',
+                backgroundColor: "#191919",
+                width: 100,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Food',
+                  component: FoodDrinks,
+                })
+              }
             />
             <Icon
                 name='local-bar'
@@ -114,8 +137,8 @@ export default class Navigation extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'Drinks',
+                  component: Drinks,
                 })
               }
             />

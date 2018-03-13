@@ -9,20 +9,84 @@ import YourBill from './YourBill.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
 import AboutContact from './AboutContact.js'
-import Drinks from './Drinks.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
+import FoodDrinks from './FoodDrinks.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import Navbar from './Navbar.js'
+import ProductContainer from './components/Order/ProductContainer' 
+import BasketComponent from './components/Order/BasketComponent' 
+import Header from './components/Order/Header' 
+import Footer from './components/Order/Footer.js' 
+import Products from './components/Order/Products.js' 
+import ModalExample from './componenets/Modal/Modal.js'
+
+
 
 let products = [];
 let prodID;
 let prodImg;
 let prodPrice;
 let sides=[];
-export default class FoodDrinks extends Component {
+export default class Drinks extends Component {
+
+  // export default class Drinks extends Component {
+
+  //   render() {
+  //     return (
+  //       <ModalExample />
+  //     );
+  //   }
+  // }
+  //   state = {
+  //     modalVisible: false,
+  //   };
+  
+  //   setModalVisible(visible) {
+  //     this.setState({modalVisible: visible});
+  //   }
+  
+  //   render() {
+  //     return (
+  //       <View style={{marginTop: 22}}>
+  //         <Modal
+  //           animationType="fade"
+  //           transparent={false}
+  //           visible={this.state.modalVisible}
+  //           onRequestClose={() => {
+  //             alert('Modal has been closed.');
+  //           }}>
+  //           <View style={{marginTop: 22}}>
+  //             <View>
+  //               <Header />
+  //                 <ProductContainer />
+  //                 <BasketComponent />
+  //                 <Footer />
+  
+  //               <TouchableHighlight
+  //                 onPress={() => {
+  //                   this.setModalVisible(!this.state.modalVisible);
+  //                 }}>
+  //                 <Text>Hide Modal</Text>
+  //               </TouchableHighlight>
+  //             </View>
+  //           </View>
+  //         </Modal>
+  
+  //         <TouchableHighlight
+  //           onPress={() => {
+  //             this.setModalVisible(true);
+  //           }}>
+  //           <Text>Show Modal</Text>
+  //         </TouchableHighlight>
+  //       </View>
+  //     );
+  //   }
+  // }
+  
+  // export default ModalExample;
   
   constructor(props) {
     super(props);
@@ -86,7 +150,7 @@ export default class FoodDrinks extends Component {
           renderSeparator= {this.ListViewItemSeparator}
           renderRow=
             {(rowData) => 
-              <Text 
+              <ModalExample 
                 style={styles.rowViewContainer} 
                 onPress={()=>{
                   this.GetItem.bind(this, rowData.product_description)(),
@@ -100,7 +164,7 @@ export default class FoodDrinks extends Component {
                   console.log('sides found: ',sides);
                 }}>
                 {rowData.product_description}
-              </Text>
+              </ModalExample>
             }        
         />
       </View>      
@@ -132,4 +196,44 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('FoodDrinks', () => Food);
+AppRegistry.registerComponent('Drinks', () => Drinks);
+
+
+
+// function setUpPostObj(){
+//   console.log('scoped',currentItem);
+//   $.ajax("/api/clicks", {
+//       type: "get"
+//   }).then(
+//       function (data) {
+//           userid=data.user.id;
+//           console.log('userid is right',userid);
+//           buildPostObj();
+//       }
+//   );
+// }
+// function buildPostObj(){
+  
+//   product = {
+//       id: currentItem.id,
+//       short_desc: currentItem.short_desc,
+//       category_id: currentItem.category_id,
+//       user_id: userid,
+//       price: currentItem.price,
+//       qty: 1
+//   };
+//   console.log('ready up for AJAX',product);
+// postBuytoCart();
+// };
+// function postBuytoCart(){
+//   // Send the PUT request.
+//   $.ajax("/add/cart/", {
+//       type: "POST",
+//       data: product
+//   }).then(
+//       function () {
+//           alert("added product to cart");
+//       }
+//   );
+// }
+// });

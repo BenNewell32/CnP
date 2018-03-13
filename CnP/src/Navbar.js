@@ -15,6 +15,7 @@ import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 import AboutContact from './AboutContact.js'
 import Order from './Order.js'
+import Drinks from './Drinks.js'
 
 
 export default class Navbar extends Component<{}> {
@@ -109,8 +110,8 @@ export default class Navbar extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'Drinks',
+                  component: Drinks,
                 })
               }
             />
