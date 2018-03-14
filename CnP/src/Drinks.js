@@ -156,7 +156,7 @@ export default class Drinks extends Component {
           renderSeparator= {this.ListViewItemSeparator}
           renderRow=
             {(rowData) => 
-              <Text 
+              <ModalExample 
                 style={styles.rowViewContainer} 
                 onPress={()=>{
                   
@@ -171,7 +171,7 @@ export default class Drinks extends Component {
                   console.log('sides found: ',sides);
                 }}>
                 {rowData.product_description}
-              </Text>
+              </ModalExample>
             }        
         />
       </View>      
