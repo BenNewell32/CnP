@@ -16,12 +16,8 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import Navbar from './Navbar.js'
 
-let products = [];
-let prodID;
-let prodImg;
-let prodPrice;
-let sides=[];
-export default class FoodDrinks extends Component {
+let orders = [];
+export default class YourOrders extends Component {
   
   constructor(props) {
     super(props);
@@ -36,7 +32,7 @@ export default class FoodDrinks extends Component {
  
   componentDidMount() {
  
-    return fetch('https://lit-reef-60415.herokuapp.com/products')
+    return fetch('https://lit-reef-60415.herokuapp.com/orders')
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
@@ -47,7 +43,7 @@ export default class FoodDrinks extends Component {
         }, 
         function() {
           console.log('response: ',responseJson)
-          products=responseJson;
+          orders=responseJson;
         });
       })
       .catch((error) => {
@@ -88,21 +84,23 @@ export default class FoodDrinks extends Component {
               <Text 
                 style={styles.rowViewContainer} 
                 onPress={()=>{
-                  this.GetItem.bind(this, rowData.product_description)(),
-                  prodID=rowData.product_id;
-                  prodImg=rowData.pic;
-                  prodPrice=rowData.cost;
-                  sides=[rowData.fries,rowData.tots,rowData.chicken,rowData.jerk,rowData.jerk,rowData.house,rowData.chili,rowData.southwest]
-                  console.log('prodid found: ',prodID);
-                  console.log('img found: ',prodImg);
-                  console.log('price found: ',prodPrice);
-                  console.log('sides found: ',sides);
-                  addToCart();
+                  this.GetItem.bind(this, rowData.id)()
+                  // prodID=rowData.product_id;
+                  // prodImg=rowData.pic;
+                  // prodPrice=rowData.cost;
+                  // sides=[rowData.fries,rowData.tots,rowData.chicken,rowData.jerk,rowData.jerk,rowData.house,rowData.chili,rowData.southwest]
+                  // console.log('prodid found: ',prodID);
+                  // console.log('img found: ',prodImg);
+                  // console.log('price found: ',prodPrice);
+                  // console.log('sides found: ',sides);
                 }}>
-                {rowData.product_description}
+                {rowData.id}
               </Text>
             }        
         />
+        <Text>
+          Pulling from Orders API :)
+        </Text>
       </View>      
     );
   }
@@ -133,58 +131,3 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('FoodDrinks', () => Food);
-
-
-function addToCart(){
-  fetch('https://lit-reef-60415.herokuapp.com/add/cart', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      products_id: 'sod',
-      user_id: 32,
-      order_id: 6
-    })
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-  // function setUpPostObj(){ 
-  //   console.log('scoped',currentItem);
-  //   $.ajax("/api/clicks", {
-  //       type: "get"
-  //   }).then(
-  //       function (data) {
-  //           userid=data.user.id;
-  //           console.log('userid is right',userid);
-  //           buildPostObj();
-  //       }
-  //   );
-  // }
-  // function buildPostObj(){ 
-  //   product = {
-  //       id: currentItem.id,
-  //       short_desc: currentItem.short_desc,
-  //       category_id: currentItem.category_id,
-  //       user_id: userid,
-  //       price: currentItem.price,
-  //       qty: 1
-  //   };
-  //   console.log('ready up for AJAX',product);
-  //   postItemtoCart();
-  // };
-  // function postItemtoCart(){
-  //   // Send the PUT request.
-  //   $.ajax("/add/cart/", {
-  //       type: "POST",
-  //       data: product
-  //   }).then(
-  //       function () {
-  //           alert("added product to cart");
-  //       }
-  //   );
-  // }
-}

@@ -7,16 +7,27 @@ import YourBill from './YourBill.js'
 import FoodDrinks from './FoodDrinks.js'
 import Pickleball from './Pickleball.js'
 import Events from './Events.js'
-import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
 import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
+import AboutContact from './AboutContact.js'
+import Order from './Order.js'
 
 
 export default class Navbar extends Component<{}> {
+  constructor(props){
+    super(props);
+    this.state = {
+      IconColor: 'black',
+    }
+this.onIconPress=this.onIconPress.bind(this);
+  }
+  onIconPress(){
+    this.setState({ IconColor: 'white'});
+  }
 
     render() {
       return (
@@ -36,7 +47,25 @@ export default class Navbar extends Component<{}> {
           <View style={{width: '100%', height: 25, backgroundColor: '#9EBA48'}} />
         </View>
         <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row', backgroundColor: '#9EBA48'}}>
-          <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
+            <TouchableOpacity
+            
+            underlayColor={'gray'}>
+            <Icon
+              name='navicon'
+              type='evilicon'
+              color={this.state.buttonColor}
+              underlayColor='#9EBA48'
+              size={40}
+              onPress={
+                () => 
+                this.props.navigator.push({
+                  title: 'Order',
+                  component: Order,
+                })
+              }
+            />
+            </TouchableOpacity>
           </View>
           <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
             <Image>
@@ -44,7 +73,7 @@ export default class Navbar extends Component<{}> {
               name='user'
               type='evilicon'
               color='black'
-              underlayColor='white'
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
@@ -55,12 +84,12 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='credit-card'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+                color='black'
+                underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
@@ -71,7 +100,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon 
               name='local-dining'
               color='black'
@@ -86,11 +115,11 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='local-bar'
               color='black'
-              underlayColor='white'
+              underlayColor='#9EBA48' 
               size={30}
               onPress={
                 () => 
@@ -101,12 +130,12 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='trophy'
               type='evilicon'
               color='black'
-              underlayColor='white'
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
@@ -117,44 +146,47 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='calendar'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+              underlayColor='#9EBA48'
+              color={this.state.IconColor}
               size={40}
               onPress={
-                () => 
+                () => {
+                this.onIconPress(),
                 this.props.navigator.push({
                   title: 'Events',
                   component: Events,
-                })
+                }),
+                  alert(this.constructor.displayName)
               }
-            />
+          }
+        />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='sc-telegram'
               type='evilicon'
               color='black'
-              underlayColor='white'
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'AboutContact',
+                  component: AboutContact,
                 })
               }
             />
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='location'
               type='evilicon'
               color='black'
-              underlayColor='white'
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 

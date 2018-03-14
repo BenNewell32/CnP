@@ -17,9 +17,12 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import EventsComponent from './EventsComponent.js'
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Content, Card, CardItem, Thumbnail  } from 'native-base'
+import Footer from './components/Cart/Footer.js'
 let width = Dimensions.get('window').width;
 
+
 export default class Events extends Component<{}>{
+
 
  render()  {
    return (

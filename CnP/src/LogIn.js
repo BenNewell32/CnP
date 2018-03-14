@@ -5,6 +5,7 @@ import {Icon, Button, Avatar} from 'react-native-elements'
 // import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Register from './Register.js';
 import Expo from 'expo';
+import Auth from './components/Auth'
 
 const id= '1247004652109579';
 let name;
@@ -15,11 +16,21 @@ let useremail;
 let userimg = "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6";
 export default class LogIn extends Component<{}> {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      loggedIn: false,
+      username: '',
+      img: '',
+      email: '',
+      id: ''
+    }
+  }
 
   login = async () =>{
     console.log('Facebook initiated');
     const {type, token} = await Expo.Facebook.logInWithReadPermissionsAsync(id, {permissions: ['public_profile']})
-    
+
     console.log(token);
     console.log(type);
     if (type === 'success'){
@@ -34,13 +45,65 @@ export default class LogIn extends Component<{}> {
     console.log(name);
     console.log(email);
     console.log(img);
-    user= name; 
+    user= name;
     useremail = email;
     userimg = json.picture.data.url;
-    console.log("userimg!: ",userimg)
+    console.log("userimg!: ",userimg);
+    console.log(json.id);
+
+    this.setState({
+      loggedIn: true,
+      username: json.name,
+      img: json.picture.data.url,
+      email: json.email,
+      id: ''
+    })
+
+    fetch('https://lit-reef-60415.herokuapp.com/users').then((result) => result.json()).then((resultJSON) => {
+      const postUser = (cb) => {
+        fetch('https://lit-reef-60415.herokuapp.com/add/user', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: json.name,
+          lastName: '',
+          email: json.email,
+          phone: '',
+          fbId: json.id
+        })
+      }).then(cb);
+    }
+      var users = resultJSON;
+      var isMatch = false;
+
+      users.forEach(user => {
+        console.log(json.id);
+        console.log(user.fbId);
+        if(parseInt(json.id) === parseInt(user.fbId)){
+          isMatch = true;
+          this.setState({
+            id: json.id
+          });
+          console.log(isMatch);
+        }
+      });
+      if(!isMatch){
+        postUser(function(){
+          fetch('https://lit-reef-60415.herokuapp.com/users').then((result) => result.json()).then((resultJSON) => {
+            this.setState({
+              id: resultJSON[resultJSON.length -1].id
+            })
+          })
+        });
+        console.log('posted to db');
+      }
+    })
     }
     else {
-      alert(type);
+      alert("You're a failure!!!!! LLOLOLOL");
     }
   }
 
@@ -62,7 +125,7 @@ export default class LogIn extends Component<{}> {
           title={'Register Now'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
           onPress={
-            () => 
+            () =>
             this.props.navigator.push({
               title: 'Register',
               component: Register,
@@ -80,6 +143,7 @@ export default class LogIn extends Component<{}> {
         <Text>
         {"\n"}
         </Text>
+        <Auth isLoggedIn={this.state.loggedIn}username={this.state.username} />
         <Button
           textStyle={{textAlign:'center'}}
           title={'Sign In with Facebook'}
