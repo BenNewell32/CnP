@@ -16,6 +16,7 @@ import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
+import Navbar from './Navbar.js'
 
 
 let width = Dimensions.get('window').width;
@@ -28,142 +29,9 @@ export default class Order extends Component<{}> {
     return (
       <View backgroundColor='white'>
       <WatchLocation/>
-        <View style={{ flexDirection: 'row', backgroundColor: '#9EBA48'}}>
-          <View style={{width: '100%', height: 25, backgroundColor: '#9EBA48'}} />
-        </View>
-        <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row', backgroundColor: '#9EBA48'}}>
-          <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon
-              name='user'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={40}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'LogIn',
-                  component: LogIn,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon
-              name='credit-card'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={40}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Your Bill',
-                  component: YourBill,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon 
-              name='local-dining'
-              color='black'
-              underlayColor='white'
-              size={30}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon
-              name='local-bar'
-              color='black'
-              underlayColor='white'
-              size={30}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon
-              name='trophy'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={40}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Your Bill',
-                  component: YourBill,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon
-              name='calendar'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={40}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon
-              name='sc-telegram'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={40}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon
-              name='location'
-              type='evilicon'
-              color='black'
-              underlayColor='white'
-              size={40}
-              onPress={
-                () => 
-                this.props.navigator.push({
-                  title: 'MapPage',
-                  component: MapPage,
-                })
-              }
-            />
-          </View>
-          <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
-          </View>
-        </View>
-        <ScrollView>
+      <Navbar navigator={this.props.navigator}/>
+        <ScrollView
+        marginTop={50}>
           <TouchableOpacity
             style={styles.container}
             onPress={

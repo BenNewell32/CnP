@@ -39,6 +39,7 @@ export default class Navbar extends Component<{}> {
           <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
           </View>
           <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
+            <Image>
             <Icon
               name='user'
               type='evilicon'
