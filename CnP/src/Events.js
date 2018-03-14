@@ -23,6 +23,7 @@ let width = Dimensions.get('window').width;
 
 export default class Events extends Component<{}>{
 
+
  render()  {
    return (
      <View>
