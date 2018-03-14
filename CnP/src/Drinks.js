@@ -21,7 +21,7 @@ import BasketComponent from './components/Order/BasketComponent'
 import Header from './components/Order/Header' 
 import Footer from './components/Order/Footer.js' 
 import Products from './components/Order/Products.js' 
-import ModalExample from './componenets/Modal/Modal.js'
+import ModalExample from './components/Order/Modal.js'
 
 
 
@@ -29,7 +29,9 @@ let products = [];
 let prodID;
 let prodImg;
 let prodPrice;
+let prodCategory;
 let sides=[];
+
 export default class Drinks extends Component {
 
   // export default class Drinks extends Component {
@@ -132,6 +134,10 @@ export default class Drinks extends Component {
     );
   }
 
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   render() {
     if (this.state.isLoading) {
       return (
@@ -150,9 +156,10 @@ export default class Drinks extends Component {
           renderSeparator= {this.ListViewItemSeparator}
           renderRow=
             {(rowData) => 
-              <ModalExample 
+              <Text 
                 style={styles.rowViewContainer} 
                 onPress={()=>{
+                  
                   this.GetItem.bind(this, rowData.product_description)(),
                   prodID=rowData.product_id;
                   prodImg=rowData.pic;
@@ -164,7 +171,7 @@ export default class Drinks extends Component {
                   console.log('sides found: ',sides);
                 }}>
                 {rowData.product_description}
-              </ModalExample>
+              </Text>
             }        
         />
       </View>      
