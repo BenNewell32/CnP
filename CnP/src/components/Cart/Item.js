@@ -7,68 +7,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // const image3 = require('../../../public/images/chicken.jpg');
 // const image4 = require('../../../public/images/chicken.jpg');
 // const image5 = require('../../../public/images/chicken.jpg');
-let cart; 
+let cart;
 let cartData = [
-//   {
-//   id: 308,
-//   order_id: 2,
-//   user_id: 1,
-//   product_id: "test",
-//   createdAt: null,
-//   updatedAt: null,
-//   product_description: "1/4 White Rotisserie Chicken",
-//   pic: "chicken.jpg",
-//   category: "Food",
-//   subcategory: "Rotisserie Chicken",
-//   cost: 11,
-//   fries: "1",
-//   tots: "1",
-//   chicken: "0",
-//   jerk: "1",
-//   house: "1",
-//   chili: "1",
-//   southwest: "1"
-//   },
-//   {
-//   id: 346,
-//   order_id: 3,
-//   user_id: 2,
-//   product_id: "berwd",
-//   createdAt: null,
-//   updatedAt: null,
-//   product_description: "test",
-//   pic: null,
-//   category: "Beer",
-//   subcategory: "Draft",
-//   cost: 6,
-//   fries: "0",
-//   tots: "0",
-//   chicken: "0",
-//   jerk: "0",
-//   house: "0",
-//   chili: "0",
-//   southwest: "0"
-//   },
-//   {
-//    id: 357,
-//   order_id: 4,
-//   user_id: 3,
-//   product_id: "fod",
-//   createdAt: null,
-//   updatedAt: null,
-//   product_description: "test",
-//   pic: "chicken.jpg",
-//   category: "Beer",
-//   subcategory: "Draft",
-//   cost: 6,
-//   fries: "0",
-//   tots: "0",
-//   chicken: "0",
-//   jerk: "0",
-//   house: "0",
-//   chili: "0",
-//   southwest: "0"
-//   }
    ]
 
   console.log("raw: ",cartData);
@@ -83,7 +23,7 @@ class Item extends Component {
   }
 
   componentDidMount() {
- 
+
     return fetch('https://lit-reef-60415.herokuapp.com/order_details')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -92,7 +32,7 @@ class Item extends Component {
         this.setState({
           isLoading: false,
           dataSource: ds.cloneWithRows(responseJson),
-        }, 
+        },
         function() {
           cart=responseJson;
 
@@ -108,38 +48,38 @@ class Item extends Component {
 
 
   _renderItem({ item, index }) {
-    const { 
-      containerStyle, 
+    const {
+      containerStyle,
       lastItemStyle,
-      imageStyle, 
-      textStyle, 
+      imageStyle,
+      textStyle,
       counterStyle,
       priceStyle } = styles;
 
     return (
     <View style={(index + 1 === cartData.length) ? lastItemStyle : containerStyle}>
       {/* <Image source={item.image} style={imageStyle} /> */}
-      
+
       <Text style={{width: '40%'}}>{item.product_description}</Text>
 
       <View style={counterStyle}>
-        <Icon.Button 
-          name="ios-remove" 
-          size={25} 
-          color='#fff' 
-          backgroundColor='#fff' 
-          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
+        <Icon.Button
+          name="ios-remove"
+          size={25}
+          color='#fff'
+          backgroundColor='#fff'
+          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
         />
 
         <Text>${item.cost}.00</Text>
 
-        <Icon.Button 
-          name="ios-add" 
-          size={25} 
-          color='#fff' 
-          backgroundColor='#fff' 
-          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
+        <Icon.Button
+          name="ios-add"
+          size={25}
+          color='#fff'
+          backgroundColor='#fff'
+          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
         />
 
@@ -147,7 +87,7 @@ class Item extends Component {
     </View>);
   }
 
-  
+
 
 
   render() {
@@ -179,8 +119,8 @@ const styles = {
     backgroundColor: '#fff'
   },
   imageStyle: {
-    width: 50, 
-    height: 50, 
+    width: 50,
+    height: 50,
     marginRight: 20
   },
   textStyle: {
