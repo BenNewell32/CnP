@@ -5,6 +5,7 @@ import {Icon, Button, Avatar} from 'react-native-elements'
 // import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Register from './Register.js';
 import Expo from 'expo';
+import Auth from './components/Auth'
 
 const id= '1247004652109579';
 let name;
@@ -20,7 +21,9 @@ export default class LogIn extends Component<{}> {
     this.state = {
       loggedIn: false,
       username: '',
-      user_id: ''
+      img: '',
+      email: '',
+      id: ''
     }
   }
 
@@ -48,8 +51,16 @@ export default class LogIn extends Component<{}> {
     console.log("userimg!: ",userimg);
     console.log(json.id);
 
+    this.setState({
+      loggedIn: true,
+      username: json.name,
+      img: json.picture.data.url,
+      email: json.email,
+      id: ''
+    })
+
     fetch('https://lit-reef-60415.herokuapp.com/users').then((result) => result.json()).then((resultJSON) => {
-      const postUser = () => {
+      const postUser = (cb) => {
         fetch('https://lit-reef-60415.herokuapp.com/add/user', {
         method: 'POST',
         headers: {
@@ -63,7 +74,7 @@ export default class LogIn extends Component<{}> {
           phone: '',
           fbId: json.id
         })
-      })
+      }).then(cb);
     }
       var users = resultJSON;
       var isMatch = false;
@@ -73,11 +84,20 @@ export default class LogIn extends Component<{}> {
         console.log(user.fbId);
         if(parseInt(json.id) === parseInt(user.fbId)){
           isMatch = true;
+          this.setState({
+            id: json.id
+          });
           console.log(isMatch);
         }
       });
       if(!isMatch){
-        postUser();
+        postUser(function(){
+          fetch('https://lit-reef-60415.herokuapp.com/users').then((result) => result.json()).then((resultJSON) => {
+            this.setState({
+              id: resultJSON[resultJSON.length -1].id
+            })
+          })
+        });
         console.log('posted to db');
       }
     })
@@ -123,6 +143,7 @@ export default class LogIn extends Component<{}> {
         <Text>
         {"\n"}
         </Text>
+        <Auth isLoggedIn={this.state.loggedIn}username={this.state.username} />
         <Button
           textStyle={{textAlign:'center'}}
           title={'Sign In with Facebook'}
