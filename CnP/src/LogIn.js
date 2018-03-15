@@ -51,7 +51,7 @@ export default class LogIn extends Component<{}> {
     console.log("userimg!: ",userimg);
     console.log(json.id);
 
-    this.setState({
+    this.setState({ 
       loggedIn: true,
       username: json.name,
       img: json.picture.data.url,
@@ -78,16 +78,17 @@ export default class LogIn extends Component<{}> {
     }
       var users = resultJSON;
       var isMatch = false;
-
+      // console.log("here benny", users)
       users.forEach(user => {
         console.log(json.id);
         console.log(user.fbId);
         if(parseInt(json.id) === parseInt(user.fbId)){
           isMatch = true;
           this.setState({
-            id: json.id
+            id: user.id
           });
           console.log(isMatch);
+          console.log("User ID to pass accross app: ", this.state)
         }
       });
       if(!isMatch){
@@ -143,7 +144,7 @@ export default class LogIn extends Component<{}> {
         <Text>
         {"\n"}
         </Text>
-        <Auth isLoggedIn={this.state.loggedIn}username={this.state.username} />
+        <Auth isLoggedIn={this.state.loggedIn}username={this.state.username} id={this.state.id}/>
         <Button
           textStyle={{textAlign:'center'}}
           title={'Sign In with Facebook'}

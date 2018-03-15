@@ -17,7 +17,8 @@ export default class Auth extends Component<{}> {
         super(props);
         this.state = {
             username: this.props.username,
-            loggedIn: this.props.isLoggedIn
+            loggedIn: this.props.isLoggedIn,
+            id: this.props.id
         }
         console.log('auth related: ', this.props);
   }
@@ -25,10 +26,24 @@ export default class Auth extends Component<{}> {
   ComponentDidMount(){
     this.setState({
         username: this.props.username,
-        loggedIn: this.props.isLoggedIn
+        loggedIn: this.props.isLoggedIn,
+        id: this.props.id
     });
     console.log(this.state);
   }
+
+//   shouldComponentUpdate(nextProps, nextState){
+//     return nextProps.id !== this.props.id
+// };
+
+//   componentWillReceiveProps(){
+//     this.setState({
+//         username: this.props.username,
+//         loggedIn: this.props.isLoggedIn,
+//         id: this.props.id
+//     });
+//     console.log(this.state);
+//   }
 
   render(){
     return (<View />)

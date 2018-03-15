@@ -72,6 +72,12 @@ https://www.youtube.com/watch?v=3iIr2uN5Yj8
 https://github.com/react-community/create-react-native-app
 
 
+///////////////////////////////////////
+// Updating State from recieved props//
+///////////////////////////////////////
+https://reactjs.org/docs/react-component.html#componentwillreceiveprops
+
+
 //we'll see.....
 shape file:
 http://drawingtool.powertoolsfortableau.com/

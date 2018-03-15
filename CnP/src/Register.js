@@ -11,6 +11,8 @@ import Events from './Events.js'
 import AboutContact from './AboutContact.js'
 import SetLocation from './SetLocation.js'
 import LogOut from './LogOut.js'
+import Auth from './components/Auth'
+
 
 export default class Register extends React.Component {
   render() {
@@ -40,6 +42,7 @@ export default class Register extends React.Component {
             this.props.navigator.popToTop()
           }
         />
+        <Auth/>
       </View>
     );
   }
