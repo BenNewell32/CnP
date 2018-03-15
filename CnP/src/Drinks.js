@@ -25,7 +25,7 @@ import ModalExample from './components/Order/Modal.js'
 
 
 
-let products = [];
+// let products = [];
 let prodID;
 let prodImg;
 let prodPrice;
@@ -98,7 +98,7 @@ export default class Drinks extends Component {
   }
   
   GetItem (product_description) { 
-    Alert.alert(product_description);
+    // Alert.alert(product_description);
   }
  
   componentDidMount() {
@@ -150,16 +150,16 @@ export default class Drinks extends Component {
     return (
       <View style={styles.MainContainer}>
         <Navbar navigator={this.props.navigator}/>
-        <ListView
+        {/* <ListView
           style={styles.NavContainer}
           dataSource={this.state.dataSource}
           renderSeparator= {this.ListViewItemSeparator}
           renderRow=
             {(rowData) => 
-              <ModalExample 
+              <Text 
                 style={styles.rowViewContainer} 
                 onPress={()=>{
-                  
+                  <ModalExample />
                   this.GetItem.bind(this, rowData.product_description)(),
                   prodID=rowData.product_id;
                   prodImg=rowData.pic;
@@ -171,9 +171,13 @@ export default class Drinks extends Component {
                   console.log('sides found: ',sides);
                 }}>
                 {rowData.product_description}
-              </ModalExample>
+              </Text>
             }        
-        />
+        /> */}
+        <Header />
+          <ProductContainer />
+          <BasketComponent />
+          <Footer />
       </View>      
     );
   }
