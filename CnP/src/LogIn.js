@@ -8,7 +8,7 @@ import Expo from 'expo';
 import Auth from './components/Auth'
 
 const id= '1247004652109579';
-let name;
+let name='Sign In with Facebook';
 let email;
 let img;
 let user;
@@ -16,6 +16,7 @@ let useremail;
 let userimg = "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6";
 export default class LogIn extends Component<{}> {
 
+  //set props = loggedout / no user data.
   constructor(props){
     super(props);
     this.state = {
@@ -36,67 +37,97 @@ export default class LogIn extends Component<{}> {
     return <Auth />
   }
 
+  //Use Login function to promp use to sign in.
   login = async () =>{
     console.log('Facebook initiated');
     const {type, token} = await Expo.Facebook.logInWithReadPermissionsAsync(id, {permissions: ['public_profile']})
 
-    console.log(token);
-    console.log(type);
+  //If user signs in, return data.
     if (type === 'success'){
       const response = await fetch(
         `https://graph.facebook.com/me?access_token=${token}&fields=id,name,email,about,picture`
       );
-        const json = await response.json();
-    console.log('USER INFO', json);
-    name = 'name: '+json.name+',';
-    email = 'email: '+json.email+',';
-    img = 'img: '+json.picture.data.url;
-    console.log(name);
-    console.log(email);
-    console.log(img);
-    user= name;
-    useremail = email;
-    userimg = json.picture.data.url;
-    console.log("userimg!: ",userimg);
-    console.log(json.id);
+      const json = await response.json();
+      // console.log('USER INFO', json);
 
-    fetch('https://lit-reef-60415.herokuapp.com/users').then((result) => result.json()).then((resultJSON) => {
-      const postUser = () => {
-        fetch('https://lit-reef-60415.herokuapp.com/add/user', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: json.name,
-          lastName: '',
-          email: json.email,
-          phone: '',
-          fbId: json.id
-        })
-      }).then((result) => result.json()).then((resultJSON) => {
-        console.log("result from post to user table: " + resultJSON._bodyInit);
-      });
-    }
+      name = "Welcome "+json.name;
+      email = json.email;
+      img = 'img: '+json.picture.data.url;
+      console.log('name: '+name);
+      console.log('email: '+email);
+      user= name;
+      useremail = email;
+      userimg = json.picture.data.url;
+      console.log("userimg!: ",userimg);
+      console.log("id: ", json.id);
+
+      //Grab all current users from MySQL database.
+      fetch('https://lit-reef-60415.herokuapp.com/users')
+        .then((result) => result.json())
+        .then((resultJSON) => {
+      
+          //POST user to MySQL (run only if no user found)
+          const postUser = () => {
+            fetch('https://lit-reef-60415.herokuapp.com/add/user', {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                firstName: json.name,
+                lastName: '',
+                email: json.email,
+                phone: '',
+                fbId: json.id
+              })
+            })
+
+            //Once the new user has been posted, return the data back to the app. 
+            .then((result) => result.json()).then((resultJSON) => {
+              console.log("result from post to user table:")
+              console.log("id: " + resultJSON[0].id);
+              console.log("name: " + resultJSON[0].firstName);
+              console.log("email: " + resultJSON[0].email);
+              console.log("fbId: " + resultJSON[0].fbId);
+              console.log("img: "+ "JACOB we need to add img to api return");
+              this.setState((prevState) => {
+                return {
+                  loggedIn: true,
+                  username: resultJSON[0].firstName,
+                  img: 'JACOB WE NEED IMG ADDED TO USER POST RETURN',
+                  email: resultJSON[0].email,
+                  id: resultJSON[0].id
+                }
+              })
+            });
+          }
+  
+      //Loop through each user in MySQL    
       var users = resultJSON;
       var isMatch = false;
-      // console.log("here benny", users)
       users.forEach(user => {
-        console.log(json.id);
-        console.log(user.fbId);
+        
+        //if the user exists, update state with users data and liftState
         if(parseInt(json.id) === parseInt(user.fbId)){
           isMatch = true;
-          let userState = {
-            loggedIn: true,
-            name: user.firstName,
-            email: user.email,
-            id: user.id,
-            img: json.picture.data.url
-          }
-          this.props.NavigatorIOS.auth({userState});
-          console.log(isMatch);
+          this.setState((prevState) => {
+            return {
+              loggedIn: true,
+              username: json.name,
+              img: json.picture.data.url,
+              email: json.email,
+              id: json.id
+            }
+          })
+
+          //Update state with user data
+          let userState = this.state;
           console.log("User ID to pass accross app: ", this.state)
+
+          //lift this state up to the navigatorIOS component
+          this.props.NavigatorIOS.auth({userState});
+
         }
       });
       if(!isMatch){
@@ -106,7 +137,7 @@ export default class LogIn extends Component<{}> {
     })
     }
     else {
-      alert("You're a failure!!!!! LLOLOLOL");
+      alert("Sorry! Please attempt to log in again.");
     }
   }
 
@@ -125,15 +156,12 @@ export default class LogIn extends Component<{}> {
         />
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Register Now'}
+          title={'Return Home'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={
-            () =>
-            this.props.navigator.push({
-              title: 'Register',
-              component: Register,
-            })
-          }
+          onPress={ 
+            () => 
+            this.props.navigator.popToTop()
+            }
           buttonStyle={{
             backgroundColor: "#191919",
             width: 300,
@@ -149,7 +177,7 @@ export default class LogIn extends Component<{}> {
         <Auth isLoggedIn={this.state.loggedIn}username={this.state.username} id={this.state.id}/>
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Sign In with Facebook'}
+          title={name}
           buttonStyle={{backgroundColor: '#9EBA48'}}
           onPress={() => this.login()}
           buttonStyle={{
@@ -161,9 +189,6 @@ export default class LogIn extends Component<{}> {
             borderRadius: 5
           }}
         />
-      <Text>
-        {name}{email}{img}
-      </Text>
       </View>
     );
   }
