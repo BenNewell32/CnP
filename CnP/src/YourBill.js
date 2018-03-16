@@ -26,7 +26,9 @@ export default class YourBill extends Component {
   render() {
     return (
       <View style={{ flex: 1}}>
-        <Navbar navigator={this.props.navigator}/>
+        <Navbar 
+        navigator={this.props.navigator}
+        route='YourBill'/>
         <Header />
           <ItemContainer />
           <BasketComponent />

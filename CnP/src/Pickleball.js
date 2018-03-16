@@ -34,7 +34,9 @@ export default class Pickleball extends Component<{}> {
   render() {
     return (      
     <View style={styles.MainContainer}>
-      <Navbar navigator={this.props.navigator}/>
+      <Navbar 
+      navigator={this.props.navigator}
+      route='Pickleball'/>
     </View> 
     );
   }

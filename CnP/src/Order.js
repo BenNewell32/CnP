@@ -29,7 +29,9 @@ export default class Order extends Component<{}> {
     return (
       <View backgroundColor='white'>
       <WatchLocation/>
-      <Navbar navigator={this.props.navigator}/>
+      <Navbar 
+      navigator={this.props.navigator}
+      route='Order'/>
         <ScrollView
         marginTop={50}>
           <TouchableOpacity

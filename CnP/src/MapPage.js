@@ -30,7 +30,9 @@ export default class MapPage extends Component<{}> {
     return (
       <View>
         <WatchLocation/>
-        <Navbar navigator={this.props.navigator}/>
+        <Navbar 
+        navigator={this.props.navigator}
+        route='MapPage'/>
       </View>
     );
   }

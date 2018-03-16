@@ -19,15 +19,35 @@ import Order from './Order.js'
 
 export default class Navbar extends Component<{}> {
   constructor(props){
-    super(props);
-    this.state = {
-      IconColor: 'black',
-    }
-this.onIconPress=this.onIconPress.bind(this);
+    super(props)
+
   }
-  onIconPress(){
-    this.setState({ IconColor: 'white'});
-  }
+// getIntialState(){
+//   return {
+//     clicked: false,
+//     IconColor:'black'
+//   }
+// }
+// wasItClicked(){
+//     this.setState({clicked: true});
+// }
+// renderBlackIcon(){
+//   IconColor:'Black'
+// }
+// renderWhiteIcon(){
+//   IconColor: 'white'
+// }
+// render(){
+//   if(this.state.clicked){
+//     return this.renderWhiteIcon();
+//   }else{
+//     return this.renderBlackIcon();
+//   }
+// }
+// getCurrentRoute = () => {
+//   let currentRoute = this.props.navigator;
+//   console.log(currentRoute);
+// }
 
     render() {
       return (
@@ -54,11 +74,12 @@ this.onIconPress=this.onIconPress.bind(this);
             <Icon
               name='navicon'
               type='evilicon'
-              color={this.state.buttonColor}
+              color={(this.props.route == "Order" ?  'white' : 'black' )}
               underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
+              
                 this.props.navigator.push({
                   title: 'Order',
                   component: Order,
@@ -67,12 +88,11 @@ this.onIconPress=this.onIconPress.bind(this);
             />
             </TouchableOpacity>
           </View>
-          <View style={{width: 50, height: 40, backgroundColor: '#9EBA48'}}>
-            <Image>
+          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='user'
               type='evilicon'
-              color='black'
+              color={(this.props.route == "LogIn" ?  'white' : 'black' )}
               underlayColor='#9EBA48'
               size={40}
               onPress={
@@ -88,7 +108,7 @@ this.onIconPress=this.onIconPress.bind(this);
             <Icon
               name='credit-card'
               type='evilicon'
-                color='black'
+                color={(this.props.route == "YourBill" ?  'white' : 'black' )}
                 underlayColor='#9EBA48'
               size={40}
               onPress={
@@ -103,7 +123,7 @@ this.onIconPress=this.onIconPress.bind(this);
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon 
               name='local-dining'
-              color='black'
+              color={(this.props.route == "FoodDrinks" ?  'white' : 'black' )}
               underlayColor='white'
               size={30}
               onPress={
@@ -118,7 +138,7 @@ this.onIconPress=this.onIconPress.bind(this);
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='local-bar'
-              color='black'
+              color={(this.props.route == "FoodDrinks" ?  'white' : 'black' )}
               underlayColor='#9EBA48' 
               size={30}
               onPress={
@@ -134,7 +154,7 @@ this.onIconPress=this.onIconPress.bind(this);
             <Icon
               name='trophy'
               type='evilicon'
-              color='black'
+              color={(this.props.route == "YourBill" ?  'white' : 'black' )}
               underlayColor='#9EBA48'
               size={40}
               onPress={
@@ -151,25 +171,26 @@ this.onIconPress=this.onIconPress.bind(this);
               name='calendar'
               type='evilicon'
               underlayColor='#9EBA48'
-              color={this.state.IconColor}
+              color={(this.props.route == "Events" ?  'white' : 'black' )}
               size={40}
               onPress={
                 () => {
-                this.onIconPress(),
+                // this.getCurrentRoute(),
                 this.props.navigator.push({
                   title: 'Events',
-                  component: Events,
-                }),
-                  alert(this.constructor.displayName)
+                  component: Events
+                })
+                console.log(this.props.route);
               }
           }
-        />
+        >
+        </Icon>
           </View>
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='sc-telegram'
               type='evilicon'
-              color='black'
+              color={(this.props.route == "AboutContact" ?  'white' : 'black' )}
               underlayColor='#9EBA48'
               size={40}
               onPress={
@@ -185,7 +206,7 @@ this.onIconPress=this.onIconPress.bind(this);
             <Icon
               name='location'
               type='evilicon'
-              color='black'
+              color={(this.props.route == "MapPage" ?  'white' : 'black' )}
               underlayColor='#9EBA48'
               size={40}
               onPress={

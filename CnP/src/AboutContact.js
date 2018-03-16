@@ -25,7 +25,9 @@ export default class AboutContact extends Component<{}> {
   render() {
     return (
        <Container>
-         <Navbar navigator={this.props.navigator} />
+         <Navbar 
+         navigator={this.props.navigator}
+         route='AboutContact' />
          <Body marginTop={100}>
            <Title>Contact Us</Title>
         </Body>
