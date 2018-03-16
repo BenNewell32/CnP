@@ -16,9 +16,9 @@ export default class Auth extends Component<{}> {
     constructor(props){
         super(props);
         this.state = {
-            username: this.props.username,
-            loggedIn: this.props.isLoggedIn,
-            id: this.props.id
+            username: '',
+            loggedIn: false,
+            id: ''
         }
         console.log('auth related: ', this.props);
   }
@@ -29,6 +29,10 @@ export default class Auth extends Component<{}> {
         loggedIn: this.props.isLoggedIn,
         id: this.props.id
     });
+    console.log(this.state);
+  }
+
+  ComponentWillUpdate(){
     console.log(this.state);
   }
 

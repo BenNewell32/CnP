@@ -27,6 +27,15 @@ export default class LogIn extends Component<{}> {
     }
   }
 
+  ComponentDidMount(){
+    console.log(this.state.loggedIn);
+  }
+
+  ComponentDidUpdate(){
+    console.log('updated');
+    return <Auth />
+  }
+
   login = async () =>{
     console.log('Facebook initiated');
     const {type, token} = await Expo.Facebook.logInWithReadPermissionsAsync(id, {permissions: ['public_profile']})
@@ -51,16 +60,8 @@ export default class LogIn extends Component<{}> {
     console.log("userimg!: ",userimg);
     console.log(json.id);
 
-    this.setState({ 
-      loggedIn: true,
-      username: json.name,
-      img: json.picture.data.url,
-      email: json.email,
-      id: ''
-    })
-
     fetch('https://lit-reef-60415.herokuapp.com/users').then((result) => result.json()).then((resultJSON) => {
-      const postUser = (cb) => {
+      const postUser = () => {
         fetch('https://lit-reef-60415.herokuapp.com/add/user', {
         method: 'POST',
         headers: {
@@ -74,7 +75,9 @@ export default class LogIn extends Component<{}> {
           phone: '',
           fbId: json.id
         })
-      }).then(cb);
+      }).then((result) => result.json()).then((resultJSON) => {
+        console.log("result from post to user table: " + resultJSON._bodyInit);
+      });
     }
       var users = resultJSON;
       var isMatch = false;
@@ -84,21 +87,20 @@ export default class LogIn extends Component<{}> {
         console.log(user.fbId);
         if(parseInt(json.id) === parseInt(user.fbId)){
           isMatch = true;
-          this.setState({
-            id: user.id
-          });
+          let userState = {
+            loggedIn: true,
+            name: user.firstName,
+            email: user.email,
+            id: user.id,
+            img: json.picture.data.url
+          }
+          this.props.NavigatorIOS.auth({userState});
           console.log(isMatch);
           console.log("User ID to pass accross app: ", this.state)
         }
       });
       if(!isMatch){
-        postUser(function(){
-          fetch('https://lit-reef-60415.herokuapp.com/users').then((result) => result.json()).then((resultJSON) => {
-            this.setState({
-              id: resultJSON[resultJSON.length -1].id
-            })
-          })
-        });
+        postUser();
         console.log('posted to db');
       }
     })

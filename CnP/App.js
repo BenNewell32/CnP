@@ -2,8 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import { StyleSheet, Text, View, NavigatorIOS, ImageBackground } from 'react-native';
 import { Button, Avatar} from 'react-native-elements'
-import Order from './src/Order.js'; 
-import LogIn from './src/LogIn.js'; 
+import Order from './src/Order.js';
+import LogIn from './src/LogIn.js';
 
 class Home extends Component<{}> {
   render() {
@@ -24,7 +24,7 @@ class Home extends Component<{}> {
           textStyle={{textAlign:'center'}}
           title={'Explore'}
           onPress={
-            () => 
+            () =>
             this.props.navigator.push({
               title: 'Order',
               component: Order,
@@ -47,7 +47,7 @@ class Home extends Component<{}> {
           title={'Sign In'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
           onPress={
-            () => 
+            () =>
             this.props.navigator.push({
               title: 'Sign In',
               component: LogIn,
@@ -86,9 +86,22 @@ class Title extends Component<{}>{
 }
 
 export default class App extends Component<{}> {
+  constructor(props){
+    super(props);
+    this.state = {
+      user: ''
+    }
+  }
+  passUser = (userObj) => {
+    this.setState({
+      user: userObj
+    });
+    console.log("app state: " + this.state);
+  }
   render() {
     return (
       <NavigatorIOS
+        auth={this.passUser}
         barTintColor='white'
         titleTextColor='#9EBA48'
         navigationBarHidden= {true}
@@ -98,7 +111,7 @@ export default class App extends Component<{}> {
         style={styleshdr.container}
         initialRoute={{
           title: 'Chicken N Pickle',
-          component: Home, 
+          component: Home,
         }}>
       </NavigatorIOS>
     );
