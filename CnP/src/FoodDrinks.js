@@ -78,7 +78,7 @@ export default class FoodDrinks extends Component {
  
     return (
       <View style={styles.MainContainer}>
-        <Navbar navigator={this.props.navigator}/>
+        <Navbar navigator={this.props.navigator} route='FoodDrinks'/>
         <ListView
           style={styles.NavContainer}
           dataSource={this.state.dataSource}

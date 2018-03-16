@@ -17,6 +17,7 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 import Navbar from './Navbar.js'
+import Drinks from './Drinks.js'
 
 
 let width = Dimensions.get('window').width;
@@ -60,8 +61,8 @@ export default class Order extends Component<{}> {
             onPress={
               () =>
                 this.props.navigator.push({
-                  title: 'FoodDrinks',
-                  component: FoodDrinks,
+                  title: 'Drinks',
+                  component: Drinks,
                 })}>
             <ImageBackground source={require('../public/images/beer.jpg')} style={styles.image} resizeMode='cover'>
               <View style={{

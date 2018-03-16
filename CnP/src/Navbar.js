@@ -15,6 +15,7 @@ import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 import AboutContact from './AboutContact.js'
 import Order from './Order.js'
+import Drinks from './Drinks.js'
 
 
 export default class Navbar extends Component<{}> {
@@ -98,7 +99,7 @@ export default class Navbar extends Component<{}> {
             <Icon 
               name='local-dining'
               color={(this.props.route == "FoodDrinks" ?  'white' : 'black' )}
-              underlayColor='white'
+              underlayColor='#9EBA48'
               size={30}
               onPress={
                 () => 
@@ -112,14 +113,14 @@ export default class Navbar extends Component<{}> {
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='local-bar'
-              color={(this.props.route == "FoodDrinks" ?  'white' : 'black' )}
+              color={(this.props.route == "Drinks" ?  'white' : 'black' )}
               underlayColor='#9EBA48' 
               size={30}
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Food and Drinks',
-                  component: FoodDrinks,
+                  title: 'Drinks',
+                  component: Drinks,
                 })
               }
             />
