@@ -23,6 +23,9 @@ let width = Dimensions.get('window').width;
 
 var test='test';
 export default class Order extends Component<{}> {
+  constructor(props){
+    super(props);
+  }
 
 
   render() {

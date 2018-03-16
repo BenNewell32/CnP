@@ -4,8 +4,21 @@ import { StyleSheet, Text, View, NavigatorIOS, ImageBackground } from 'react-nat
 import { Button, Avatar} from 'react-native-elements'
 import Order from './src/Order.js';
 import LogIn from './src/LogIn.js';
+import Auth from './src/components/Auth.js'
+
+let userInfo="Jacob... I feel like I'm close";
 
 class Home extends Component<{}> {
+  constructor(props){
+    super(props);
+  }
+  
+componentDidMount(){
+  return(
+  userInfo=this.props.passProps
+  )
+}
+
   render() {
     return (
       <View style={styles.container}>
@@ -41,7 +54,9 @@ class Home extends Component<{}> {
         />
         <Text>
         {"\n"}
+        {userInfo}
         </Text>
+        
         <Button
           textStyle={{textAlign:'center'}}
           title={'Sign In'}

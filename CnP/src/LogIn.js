@@ -6,6 +6,7 @@ import {Icon, Button, Avatar} from 'react-native-elements'
 import Register from './Register.js';
 import Expo from 'expo';
 import Auth from './components/Auth'
+import Home from '../App.js'
 
 const id= '1247004652109579';
 let name='Sign In with Facebook';
@@ -14,6 +15,8 @@ let img;
 let user;
 let useremail;
 let userimg = "https://scontent.fmkc1-1.fna.fbcdn.net/v/t1.0-9/14212227_1074970642558688_7772776059154917138_n.jpg?oh=fb78a6d04d6c34b160f52b5e630d1a4c&oe=5B200FC6";
+let userState;
+
 export default class LogIn extends Component<{}> {
 
   //set props = loggedout / no user data.
@@ -122,11 +125,21 @@ export default class LogIn extends Component<{}> {
           })
 
           //Update state with user data
-          let userState = this.state;
-          console.log("User ID to pass accross app: ", this.state)
+          userState = {
+            id: this.state.id,
+            name: this.state.username,
+            img: this.state.img,
+            email: this.state.email,
+          } 
+          console.log("User ID to pass accross app: ", userState)
 
-          //lift this state up to the navigatorIOS component
-          this.props.NavigatorIOS.auth({userState});
+          ////////////////////////////////////////////////////
+          //JACOB!!
+          //lift this state up to the navigatorIOS component//
+          //////Lets figure this out first thing tomorrow/////
+          
+          ////////////////////////////////////////////////////
+          // this.props.NavigatorIOS.auth({userState});
 
         }
       });
@@ -139,7 +152,14 @@ export default class LogIn extends Component<{}> {
     else {
       alert("Sorry! Please attempt to log in again.");
     }
-  }
+    
+    //BENS LIFT STATE
+    this.props.navigator.push({
+        title: 'Home',
+        component: Home,
+        passProps: userState
+      })
+  };
 
   render() {
     return (
