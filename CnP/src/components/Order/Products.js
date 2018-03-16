@@ -21,7 +21,10 @@ class Products extends Component {
       isLoading: true
     }
   }
-
+  
+  GetItem (product_description) { 
+    Alert.alert(product_description);
+  }
   componentDidMount() {
     return fetch('https://lit-reef-60415.herokuapp.com/drinks')
       .then((response) => response.json())

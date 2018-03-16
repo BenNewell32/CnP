@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
-import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,} from 'react-native';
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground,Linking} from 'react-native';
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -36,8 +36,57 @@ export default class Pickleball extends Component<{}> {
     <View style={styles.MainContainer}>
       <Navbar navigator={this.props.navigator}/>
         <View style={styles.containterStyle}>
-        <Text>Pickleball</Text>
-        <Text>Book A Court</Text>
+        {/* <Text style={styles.Header}>Pickleball</Text> */}
+        <Text style={styles.headerTwo}>Open Play</Text>
+        <View style={styles.rates}>
+        
+        <Text>$5 per person</Text>
+        <Text> $3 for a paddle</Text> 
+        <Text>$3 for a pickleball</Text>
+        <Text>Open Play is on Outdoor Courts 1 {'&'} 2. To purchase Open Play, please go to the Pickleball Counter at the Main Bar.</Text> 
+        <Text></Text>
+        </View>
+        <Text style={styles.headerTwo}>Book A Court</Text>
+        <View style={styles.rates}>
+        <Text>RATES:</Text> 
+        <Text>Mon-Fri: 8-5pm-$20/hr</Text>
+        <Text>     5pm-close- $40/hr</Text> 
+        <Text>Weekends 8am-close- $40/hr</Text>
+        </View>
+        <Button
+              textStyle={{
+                textAlign:'center',
+                justifyContent:'center'
+              }}
+              title={'Indoor Court'}
+              buttonStyle={{
+                backgroundColor: "#191919",
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5,
+                margin: 5
+              }}
+              onPress={() => 
+                Linking.openURL('https://www.planyo.com/booking.php?mode=reserve&calendar=34774&resource_id=106374')
+              }
+              />
+               <Button
+              textStyle={{
+                textAlign:'center',
+                justifyContent:'center'
+              }}
+              title={'Outdoor Court'}
+              buttonStyle={{
+                backgroundColor: "#191919",
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5,
+                margin: 5
+              }}
+              onPress={() => 
+                Linking.openURL('https://www.planyo.com/booking.php?mode=reserve&calendar=34774&resource_id=106374')
+              }
+              />
         </View>
     </View> 
     );
@@ -46,16 +95,43 @@ export default class Pickleball extends Component<{}> {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 2,
+  MainContainer: {
+    flex: 1,
     backgroundColor: '#9EBA48',
     justifyContent: 'center'
     },
     containterStyle: {
-      flex: 1,
-      backgroundColor: 'yellow'
+      marginTop: 35,
+      flex: 2,
+      backgroundColor: 'white',
+      justifyContent: 'center'
+    },
+    // Header: {
+    // fontSize: 22,
+    // flex: 2,
+    //  elevation: 2,
+    //  marginTop: 25,
+    // //  flexDirection: 'row',
+    //  justifyContent: 'space-between',
+    //  alignItems: 'center',
+    //  paddingLeft: 10,
+    //  paddingRight: 10,
+    // },
+    headerTwo: {
+      fontSize: 25,
+      textAlign: 'center',
+      margin: 5,
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    },
+    rates: {
+      textAlign: 'center',
+      alignItems: 'center',
+      margin: 2,
     }
 });
+
+
 
 
 

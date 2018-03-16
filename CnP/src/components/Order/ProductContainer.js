@@ -6,7 +6,7 @@ class ProductContainer extends Component {
   render() {
     return (
       <View style={styles.containterStyle}>
-        <Products />
+        {/* <Products /> */}
       </View>
     );
   }

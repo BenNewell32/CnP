@@ -10,20 +10,12 @@ const Header = () => {
       <Icon name="ios-close" size={35} color="#a8a9ad" onPress={() => this.props.nav} />
       </TouchableOpacity>
       <Text style={{ fontSize: 18 }}>BEER</Text>
-          <Text style={{fontSize: 25, textAlign: "center", fontWeight: 0, backgroundColor: '#555555', color: 'white', marginTop: 2, marginBottom: 2}}>Seasoning Options:</Text>
-              <SegmentedControlIOS style={{tintColor: '#9EBA48'}}
-                values={['Canned', 'Draft']}
-                selectedBeer={this.state.selectedBeer}
-                onChange={(event) => {
-                  this.setState({selectedBeer: event.nativeEvent.selectedSegmentIndex});
-                }}
-              />
-      {/* <TouchableOpacity>
+      <TouchableOpacity>
         <Text>Canned</Text>
       </TouchableOpacity>
       <TouchableOpacity>
         <Text>Draft</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
     </View>
   );
 };

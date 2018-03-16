@@ -16,6 +16,12 @@ import WatchLocation from './WatchLocation.js'
 import Register from './Register.js'
 import LogIn from './LogIn.js'
 import Navbar from './Navbar.js'
+import ProductContainer from './components/Order/ProductContainer' 
+import BasketComponent from './components/Order/BasketComponent' 
+import Header from './components/Order/Header' 
+import Footer from './components/Order/Footer.js' 
+import Products from './components/Order/Products.js' 
+import ModalExample from './components/Order/Modal.js'
 
 let products = [];
 let prodID;
@@ -37,7 +43,7 @@ export default class FoodDrinks extends Component {
  
   componentDidMount() {
  
-    return fetch('https://lit-reef-60415.herokuapp.com/products')
+    return fetch('https://lit-reef-60415.herokuapp.com/food')
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
@@ -80,6 +86,8 @@ export default class FoodDrinks extends Component {
     return (
       <View style={styles.MainContainer}>
         <Navbar navigator={this.props.navigator}/>
+        <Header />
+        <ProductContainer>
         <ListView
           style={styles.NavContainer}
           dataSource={this.state.dataSource}
@@ -103,6 +111,8 @@ export default class FoodDrinks extends Component {
               </Text>
             }        
         />
+        </ProductContainer>
+        <Footer/>
       </View>      
     );
   }
