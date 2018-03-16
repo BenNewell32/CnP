@@ -22,32 +22,6 @@ export default class Navbar extends Component<{}> {
     super(props)
 
   }
-// getIntialState(){
-//   return {
-//     clicked: false,
-//     IconColor:'black'
-//   }
-// }
-// wasItClicked(){
-//     this.setState({clicked: true});
-// }
-// renderBlackIcon(){
-//   IconColor:'Black'
-// }
-// renderWhiteIcon(){
-//   IconColor: 'white'
-// }
-// render(){
-//   if(this.state.clicked){
-//     return this.renderWhiteIcon();
-//   }else{
-//     return this.renderBlackIcon();
-//   }
-// }
-// getCurrentRoute = () => {
-//   let currentRoute = this.props.navigator;
-//   console.log(currentRoute);
-// }
 
     render() {
       return (
@@ -223,5 +197,5 @@ export default class Navbar extends Component<{}> {
         </View>
         </View>
         )
-        }
-        }
+      }
+    }
