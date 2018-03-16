@@ -30,6 +30,7 @@ this.onIconPress=this.onIconPress.bind(this);
   }
 
     render() {
+      let currentRoute = navigator.getCurrentRoutes().pop();
       return (
 <View backgroundColor='white'>
       {/* <WatchLocation/> */}
@@ -150,7 +151,7 @@ this.onIconPress=this.onIconPress.bind(this);
               name='calendar'
               type='evilicon'
               underlayColor='#9EBA48'
-              color={this.state.IconColor}
+              color={(currentRoute == "Events" ? this.IconColor : '')}
               size={40}
               onPress={
                 () => {
