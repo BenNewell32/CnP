@@ -25,7 +25,7 @@ class Item extends Component {
   componentDidMount() {
 
     return fetch('https://lit-reef-60415.herokuapp.com/order_details')
-      .then((response) => response.json())
+      .then((response) => rponse.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
         sectionHeaderHasChanged: (s1, s2) => s1 !== s2});

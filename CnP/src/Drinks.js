@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
-import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br} from 'react-native';
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br, SegmentedControlIOS} from 'react-native';
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
