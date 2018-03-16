@@ -126,8 +126,8 @@ export default class Navbar extends Component<{}> {
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Your Bill',
-                  component: YourBill,
+                  title: 'Pickleball',
+                  component: Pickleball,
                 })
               }
             />

@@ -2,21 +2,23 @@ import React from 'react';
 import { Text, View ,TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TotalComp from './TotalComponent';
+import YourBill from '../../YourBill.js';
 
 const Footer = () => {
   return (
     <View style={styles.containerStyle}>
       <TotalComp />
       <View style={styles.buttonContainerStyle}>
-        <View style={styles.closeButtonStyle}>
-        <TouchableOpacity>
-          <Text style={{ color: '#fff' }}>Close</Text>
-        </TouchableOpacity>
-
-        </View>
+    
 
         <View style={styles.checkoutButtonStyle}>
-          <TouchableOpacity>
+          <TouchableOpacity
+          onPress={
+            () => this.props.navigator.push({
+              title: 'YourBill',
+              component: YourBill,
+            })
+          }>
           <Text style={{ color: '#fff' }}>Go to checkout</Text>
           </TouchableOpacity>
         </View>

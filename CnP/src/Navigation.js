@@ -15,6 +15,7 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 import Drinks from './Drinks.js'
+import Pickleball from './Pickleball.js'
 
 var test='test';
 export default class Navigation extends Component<{}> {

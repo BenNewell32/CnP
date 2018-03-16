@@ -17,7 +17,7 @@ import LogIn from './LogIn.js'
 import MapPage from './MapPage.js'
 import Navbar from './Navbar.js'
 
-var test='test';
+// var test='test';
 export default class Pickleball extends Component<{}> {
 
   _keyExtractor = (item, index) => index;
@@ -35,6 +35,10 @@ export default class Pickleball extends Component<{}> {
     return (      
     <View style={styles.MainContainer}>
       <Navbar navigator={this.props.navigator}/>
+        <View style={styles.containterStyle}>
+        <Text>Pickleball</Text>
+        <Text>Book A Court</Text>
+        </View>
     </View> 
     );
   }
@@ -43,21 +47,27 @@ export default class Pickleball extends Component<{}> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#9EBA48',
-    // alignItems: 'left',
-    justifyContent: 'center',
+    justifyContent: 'center'
     },
+    containterStyle: {
+      flex: 1,
+      backgroundColor: 'yellow'
+    }
 });
 
 
-const styles2 = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#9EBA48',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 25,
-    marginTop: '90%',
-  },
-});
+
+
+
+// const styles2 = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#9EBA48',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     fontSize: 25,
+//     marginTop: '90%',
+//   },
+// });

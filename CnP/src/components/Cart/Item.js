@@ -1,81 +1,85 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, Image } from 'react-native';
+import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const image1 = require('../../../public/images/beer.jpg');
-const image2 = require('../../../public/images/beer.jpg');
-const image3 = require('../../../public/images/beer.jpg');
-const image4 = require('../../../public/images/beer.jpg');
-const image5 = require('../../../public/images/beer.jpg');
+// const image1 = require('../../../public/images/chicken.jpg');
+// const image2 = require('../../../public/images/chicken.jpg');
+// const image3 = require('../../../public/images/chicken.jpg');
+// const image4 = require('../../../public/images/chicken.jpg');
+// const image5 = require('../../../public/images/chicken.jpg');
+let cart;
+let cartData = [
+   ]
 
-const data = [
-{
-  id: 1,
-  image: image1,
-  name: 'Orange',
-  price: 10,
-  amountTaken: 3
-}, {
-  id: 2,
-  image: image2,
-  name: 'Tomato',
-  price: 5,
-  amountTaken: 4
-}, {
-  id: 3,
-  image: image3,
-  name: 'Salmon fillet',
-  price: 16,
-  amountTaken: 2
-}, {
-  id: 4,
-  image: image4,
-  name: 'Greens',
-  price: 3,
-  amountTaken: 3
-}, {
-  id: 5,
-  image: image5,
-  name: 'Rye Bread',
-  price: 20,
-  amountTaken: 1
-},  
-];
+  console.log("raw: ",cartData);
 
 class Item extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    }
+  }
+
+  componentDidMount() {
+
+    return fetch('https://lit-reef-60415.herokuapp.com/order_details')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
+        sectionHeaderHasChanged: (s1, s2) => s1 !== s2});
+        this.setState({
+          isLoading: false,
+          dataSource: ds.cloneWithRows(responseJson),
+        },
+        function() {
+          cart=responseJson;
+
+          console.log('cart: ', cart);
+          cartData=cart;
+          console.log('data:', cartData);
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+
   _renderItem({ item, index }) {
-    const { 
-      containerStyle, 
+    const {
+      containerStyle,
       lastItemStyle,
-      imageStyle, 
-      textStyle, 
+      imageStyle,
+      textStyle,
       counterStyle,
       priceStyle } = styles;
 
     return (
-    <View style={(index + 1 === data.length) ? lastItemStyle : containerStyle}>
-      <Image source={item.image} style={imageStyle} />
-      
-      
+    <View style={(index + 1 === cartData.length) ? lastItemStyle : containerStyle}>
+      {/* <Image source={item.image} style={imageStyle} /> */}
+
+      <Text style={{width: '40%'}}>{item.product_description}</Text>
 
       <View style={counterStyle}>
-        <Icon.Button 
-          name="ios-remove" 
-          size={25} 
-          color='#fff' 
-          backgroundColor='#fff' 
-          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
+        <Icon.Button
+          name="ios-remove"
+          size={25}
+          color='#fff'
+          backgroundColor='#fff'
+          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
         />
 
-        <Text>{item.amountTaken}</Text>
+        <Text>${item.cost}.00</Text>
 
-        <Icon.Button 
-          name="ios-add" 
-          size={25} 
-          color='#fff' 
-          backgroundColor='#fff' 
-          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
+        <Icon.Button
+          name="ios-add"
+          size={25}
+          color='#fff'
+          backgroundColor='#fff'
+          style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
         />
 
@@ -84,10 +88,12 @@ class Item extends Component {
   }
 
 
+
+
   render() {
     return (
       <FlatList
-        data={data}
+        data={cartData}
         renderItem={this._renderItem}
         keyExtractor={(item) => item.id}
       />
@@ -113,8 +119,8 @@ const styles = {
     backgroundColor: '#fff'
   },
   imageStyle: {
-    width: 50, 
-    height: 50, 
+    width: 50,
+    height: 50,
     marginRight: 20
   },
   textStyle: {

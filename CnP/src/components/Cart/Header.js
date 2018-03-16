@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+
 const Header = () => {
   return (
     <View style={styles.headerStyle}>

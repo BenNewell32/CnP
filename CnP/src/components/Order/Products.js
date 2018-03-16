@@ -9,8 +9,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // const image5 = require('../../../public/images/beer.jpg');
 
 let products;
+let productsData = [];
 
-// console.log("raw :", cartData);
+console.log("raw :", productsData);
 
 class Products extends Component {
 
@@ -22,7 +23,7 @@ class Products extends Component {
   }
 
   componentDidMount() {
-    return fetch('https://lit-reef-60415.herokuapp.com/products')
+    return fetch('https://lit-reef-60415.herokuapp.com/drinks')
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
@@ -32,11 +33,11 @@ class Products extends Component {
           dataSource: ds.cloneWithRows(responseJson),
         }, 
         function() {
-          console.log('response: ',responseJson)
+
           products=responseJson;
           console.log('products: ', products);
-          productsData= products;
-          console.log('data', productsData)
+          productsData=products;
+          console.log('data: ', productsData);
         });
       })
       .catch((error) => {
@@ -61,16 +62,16 @@ class Products extends Component {
       
 
       <View style={counterStyle}>
-        <Icon.Button 
+        {/* <Icon.Button 
           name="ios-remove" 
           size={25} 
           color='#fff' 
           backgroundColor='#fff' 
           style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
           iconStyle={{ marginRight: 0 }}
-        />
-
-        <Text>${item.amountTaken}.00</Text>
+        /> */}
+        <Text>{item.subcategory}</Text>
+        <Text>${item.cost}</Text>
 
         <Icon.Button 
           name="ios-add" 
@@ -79,6 +80,12 @@ class Products extends Component {
           backgroundColor='#fff' 
           style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }} 
           iconStyle={{ marginRight: 0 }}
+          onPress={
+            () =>
+              this.props.something.push({
+
+              })
+          }
         />
 
       </View>

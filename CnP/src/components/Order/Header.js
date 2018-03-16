@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Products from './Products';
 
 const Header = () => {
   return (
@@ -8,9 +9,12 @@ const Header = () => {
     <TouchableOpacity>
       <Icon name="ios-close" size={35} color="#a8a9ad" onPress={() => this.props.nav} />
       </TouchableOpacity>
-      <Text style={{ fontSize: 18 }}>Your Cart</Text>
+      <Text style={{ fontSize: 18 }}>BEER</Text>
       <TouchableOpacity>
-        <Text>Empty</Text>
+        <Text>Canned</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text>Draft</Text>
       </TouchableOpacity>
     </View>
   );
@@ -24,8 +28,8 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingLeft: 10,
+    paddingRight: 10,
     // borderBottomWidth: 1,
     borderColor: '#e2e2e2'
   }
