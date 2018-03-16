@@ -23,10 +23,15 @@ import Header from './components/Cart/Header'
 import Footer from './components/Cart/Footer.js' 
 
 export default class YourBill extends Component {
+  constructor(props){
+    super(props)
+
+  }
+
   render() {
     return (
       <View style={{ flex: 1}}>
-        <Navbar navigator={this.props.navigator}/>
+        <Navbar navigator={this.props.navigator} route='YourBill'/>
         <Header />
           <ItemContainer />
           <BasketComponent />

@@ -17,6 +17,10 @@ import MapPage from './MapPage.js'
 
 var test='test';
 export default class Navigation extends Component<{}> {
+  constructor(props){
+    super(props)
+
+  }
 
   _keyExtractor = (item, index) => index;
 

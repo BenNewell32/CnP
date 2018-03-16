@@ -19,6 +19,10 @@ import Navbar from './Navbar.js'
 
 var test='test';
 export default class Pickleball extends Component<{}> {
+  constructor(props){
+    super(props)
+
+  }
 
   _keyExtractor = (item, index) => index;
 
@@ -34,7 +38,7 @@ export default class Pickleball extends Component<{}> {
   render() {
     return (      
     <View style={styles.MainContainer}>
-      <Navbar navigator={this.props.navigator}/>
+      <Navbar navigator={this.props.navigator} route='Pickleball'/>
     </View> 
     );
   }

@@ -20,7 +20,11 @@ import Navbar from './Navbar.js'
 
 let pageName='About / Contact';
 export default class AboutContact extends Component<{}> {
+  constructor(props){
+    super(props)
 
+  }
+  
   render() {
     return (
       <View>
@@ -28,6 +32,7 @@ export default class AboutContact extends Component<{}> {
           <Navbar
             pageName={pageName}
             navigator={this.props.navigator}
+            route='AboutContact'
           />
         </View>
         <View>

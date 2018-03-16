@@ -18,6 +18,10 @@ import Order from './Order.js'
 
 
 export default class Navbar extends Component<{}> {
+  constructor(props){
+    super(props)
+
+  }
 
     render() {
       return (
@@ -38,27 +42,32 @@ export default class Navbar extends Component<{}> {
         </View>
         <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row', backgroundColor: '#9EBA48'}}>
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
+            <TouchableOpacity
+            
+            underlayColor={'gray'}>
             <Icon
               name='navicon'
               type='evilicon'
-              color='white'
-              underlayColor='white'
+              color={(this.props.route == "Order" ?  'white' : 'black' )}
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
+              
                 this.props.navigator.push({
                   title: 'Order',
                   component: Order,
                 })
               }
             />
+            </TouchableOpacity>
           </View>
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='user'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+              color={(this.props.route == "LogIn" ?  'white' : 'black' )}
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
@@ -73,8 +82,8 @@ export default class Navbar extends Component<{}> {
             <Icon
               name='credit-card'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+                color={(this.props.route == "YourBill" ?  'white' : 'black' )}
+                underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
@@ -88,7 +97,7 @@ export default class Navbar extends Component<{}> {
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon 
               name='local-dining'
-              color='black'
+              color={(this.props.route == "FoodDrinks" ?  'white' : 'black' )}
               underlayColor='white'
               size={30}
               onPress={
@@ -103,8 +112,8 @@ export default class Navbar extends Component<{}> {
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='local-bar'
-              color='black'
-              underlayColor='white'
+              color={(this.props.route == "FoodDrinks" ?  'white' : 'black' )}
+              underlayColor='#9EBA48' 
               size={30}
               onPress={
                 () => 
@@ -119,14 +128,14 @@ export default class Navbar extends Component<{}> {
             <Icon
               name='trophy'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+              color={(this.props.route == "Pickleball" ?  'white' : 'black' )}
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
                 this.props.navigator.push({
-                  title: 'Your Bill',
-                  component: YourBill,
+                  title: 'Pickleball',
+                  component: Pickleball,
                 })
               }
             />
@@ -135,24 +144,28 @@ export default class Navbar extends Component<{}> {
             <Icon
               name='calendar'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+              underlayColor='#9EBA48'
+              color={(this.props.route == "Events" ?  'white' : 'black' )}
               size={40}
               onPress={
-                () => 
+                () => {
+                // this.getCurrentRoute(),
                 this.props.navigator.push({
                   title: 'Events',
-                  component: Events,
+                  component: Events
                 })
+                console.log(this.props.route);
               }
-            />
+          }
+        >
+        </Icon>
           </View>
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='sc-telegram'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+              color={(this.props.route == "AboutContact" ?  'white' : 'black' )}
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
@@ -167,8 +180,8 @@ export default class Navbar extends Component<{}> {
             <Icon
               name='location'
               type='evilicon'
-              color='black'
-              underlayColor='white'
+              color={(this.props.route == "MapPage" ?  'white' : 'black' )}
+              underlayColor='#9EBA48'
               size={40}
               onPress={
                 () => 
@@ -184,5 +197,5 @@ export default class Navbar extends Component<{}> {
         </View>
         </View>
         )
-        }
-        }
+      }
+    }

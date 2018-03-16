@@ -24,13 +24,17 @@ import Navbar from './Navbar.js'
 let width = Dimensions.get('window').width;
 
 export default class MapPage extends Component<{}> {
+  constructor(props){
+    super(props)
+
+  }
 
 
   render()  {
     return (
       <View>
         <WatchLocation/>
-        <Navbar navigator={this.props.navigator}/>
+        <Navbar navigator={this.props.navigator} route='MapPage'/>
       </View>
     );
   }

@@ -22,11 +22,15 @@ let width = Dimensions.get('window').width;
 
 
 export default class Events extends Component<{}>{
+  constructor(props){
+    super(props)
+
+  }
 
  render()  {
    return (
      <View>
-    <Navbar navigator={this.props.navigator}/>
+    <Navbar navigator={this.props.navigator} route='Events'/>
        <ScrollView 
        marginTop={50}>
          <EventsComponent
