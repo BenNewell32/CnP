@@ -5,13 +5,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const Header = () => {
   return (
     <View style={styles.headerStyle}>
-    <TouchableOpacity>
+    {/* <TouchableOpacity>
       <Icon name="ios-close" size={35} color="#a8a9ad" onPress={() => this.props.nav} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <Text style={{ fontSize: 18 }}>Your Cart</Text>
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
         <Text>Empty</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };

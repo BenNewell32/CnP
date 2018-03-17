@@ -3,26 +3,33 @@ import { Text, View ,TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TotalComp from './TotalComponent';
 
-const Footer = () => {
-  return (
-    <View style={styles.containerStyle}>
-      <TotalComp />
-      <View style={styles.buttonContainerStyle}>
-        <View style={styles.closeButtonStyle}>
-        <TouchableOpacity>
-          <Text style={{ color: '#fff' }}>Close</Text>
-        </TouchableOpacity>
+class Footer extends React.Component {
+  constructor(props){
+    super(props)
+  }
 
-        </View>
 
-        <View style={styles.checkoutButtonStyle}>
-          <TouchableOpacity>
-          <Text style={{ color: '#fff' }}>Go to checkout</Text>
-          </TouchableOpacity>
+  render(){
+      return (
+        <View style={styles.containerStyle}>
+          <TotalComp userState={this.props.userState} />
+          <View style={styles.buttonContainerStyle}>
+            <View style={styles.closeButtonStyle}>
+            <TouchableOpacity>
+              <Text style={{ color: '#fff' }}>Close</Text>
+            </TouchableOpacity>
+
+            </View>
+
+            <View style={styles.checkoutButtonStyle}>
+              <TouchableOpacity>
+              <Text style={{ color: '#fff' }}>Go to checkout</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
-      </View>
-    </View>
-  );
+      );
+    }
 };
 
 const styles = {
@@ -44,7 +51,7 @@ const styles = {
     paddingRight: 30,
     paddingLeft: 30,
     borderRadius: 3,
-  }, 
+  },
   checkoutButtonStyle: {
     backgroundColor: '#9EBA48',
     padding: 10,

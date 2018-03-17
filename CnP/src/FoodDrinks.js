@@ -34,6 +34,23 @@ export default class FoodDrinks extends Component {
     Alert.alert(product_description);
   }
 
+  addToCart = (id) => {
+    fetch('https://lit-reef-60415.herokuapp.com/add/cart', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        products_id: id,
+        user_id: this.props.userState.id,
+      })
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
   componentDidMount() {
 
     return fetch('https://lit-reef-60415.herokuapp.com/products')
@@ -97,7 +114,7 @@ export default class FoodDrinks extends Component {
                   console.log('img found: ',prodImg);
                   console.log('price found: ',prodPrice);
                   console.log('sides found: ',sides);
-                  addToCart();
+                  this.addToCart(prodID);
                 }}>
                 {rowData.product_description}
               </Text>
@@ -135,22 +152,7 @@ const styles = StyleSheet.create({
 AppRegistry.registerComponent('FoodDrinks', () => Food);
 
 
-function addToCart(){
-  fetch('https://lit-reef-60415.herokuapp.com/add/cart', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      products_id: 'sod',
-      user_id: 32,
-      order_id: 6
-    })
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+
 
   // function setUpPostObj(){
   //   console.log('scoped',currentItem);
@@ -187,4 +189,3 @@ function addToCart(){
   //       }
   //   );
   // }
-}

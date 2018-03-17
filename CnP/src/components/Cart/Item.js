@@ -24,7 +24,7 @@ class Item extends Component {
 
   componentDidMount() {
 
-    return fetch('https://lit-reef-60415.herokuapp.com/order_details')
+    return fetch(`https://lit-reef-60415.herokuapp.com/order_details/${this.props.userState.id}`)
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
@@ -35,10 +35,7 @@ class Item extends Component {
         },
         function() {
           cart=responseJson;
-
-          console.log('cart: ', cart);
           cartData=cart;
-          console.log('data:', cartData);
         });
       })
       .catch((error) => {
@@ -60,9 +57,9 @@ class Item extends Component {
     <View style={(index + 1 === cartData.length) ? lastItemStyle : containerStyle}>
       {/* <Image source={item.image} style={imageStyle} /> */}
 
-      <Text style={{width: '40%'}}>{item.product_description}</Text>
+      <Text style={{width: '80%'}}>{item.product_description}</Text>
 
-      <View style={counterStyle}>
+      {/* <View style={counterStyle}>
         <Icon.Button
           name="ios-remove"
           size={25}
@@ -70,20 +67,20 @@ class Item extends Component {
           backgroundColor='#fff'
           style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
-        />
+        /> */}
 
-        <Text>${item.cost}.00</Text>
+        <Text>${item.cost}</Text>
 
-        <Icon.Button
+        {/* <Icon.Button
           name="ios-add"
           size={25}
           color='#fff'
           backgroundColor='#fff'
           style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
-        />
+        /> */}
 
-      </View>
+      {/* </View> */}
     </View>);
   }
 

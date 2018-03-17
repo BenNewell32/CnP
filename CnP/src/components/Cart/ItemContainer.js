@@ -6,7 +6,7 @@ class ItemContainer extends Component {
   render() {
     return (
       <View style={styles.containterStyle}>
-        <Item />
+        <Item userState={this.props.userState} />
       </View>
     );
   }

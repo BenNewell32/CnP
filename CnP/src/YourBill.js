@@ -33,16 +33,17 @@ export default class YourBill extends Component {
       <View style={{ flex: 1}}>
         <Navbar userState={this.props.userState} navigator={this.props.navigator} route='YourBill'/>
         <Header />
-          <ItemContainer />
-          <BasketComponent />
-          <Footer />
-          <TouchableOpacity
+          <ItemContainer userState={this.props.userState} />
+          <BasketComponent userState={this.props.userState} />
+          <Footer userState={this.props.userState} />
+          {/* <TouchableOpacity
             style={{backgroundColor:'yellow'}}
             onPress={
               () =>
               this.props.navigator.push({
                 title: 'YourOrders',
                 component: YourOrders,
+                passProps: {userState: this.props.userState}
               })
             }
           >
@@ -56,7 +57,7 @@ export default class YourBill extends Component {
                 underlayColor='white'
                 size={40}
               />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
       </View>
 
      );
