@@ -24,12 +24,13 @@ export default class AboutContact extends Component<{}> {
     super(props)
 
   }
-  
+
   render() {
     return (
       <View>
         <View>
           <Navbar
+            userState={this.props.userState}
             pageName={pageName}
             navigator={this.props.navigator}
             route='AboutContact'
@@ -45,12 +46,12 @@ export default class AboutContact extends Component<{}> {
             style={styles.map}
             showsUserLocation={ true }
             initialRegion={{
-              latitude: 39.140117, 
+              latitude: 39.140117,
               longitude: -94.579951,
               latitudeDelta: 0.00422,
               longitudeDelta: 0.00421,
             }}
-  
+
           >
           </MapView>
           </View>
@@ -69,7 +70,7 @@ export default class AboutContact extends Component<{}> {
                 borderWidth: 0,
                 borderRadius: 5
               }}
-              onPress={() => 
+              onPress={() =>
                 Linking.openURL('https://maps.google.com?q=Chicken+N+Pickle+1761+Burlington+St.+North+Kansas+City,+MO+64116')
               }
               />
@@ -87,7 +88,7 @@ export default class AboutContact extends Component<{}> {
                   borderWidth: 0,
                   borderRadius: 5
                 }}
-                onPress={() => 
+                onPress={() =>
                   Linking.openURL('tel:7856335715')
                 }
               />

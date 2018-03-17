@@ -28,13 +28,13 @@ export default class Shop extends Component<{}> {
         underlayColor='#dddddd'>
       </TouchableHighlight>
     );
-    
+
   };
 
   render() {
     return (
       <View style={styles.MainContainer}>
-      <Navbar navigator={this.props.navigator}/>
+      <Navbar userState={this.props.userState} navigator={this.props.navigator}/>
       <Text>
         Shop Page
         </Text>
@@ -42,10 +42,10 @@ export default class Shop extends Component<{}> {
         style={styles.NavContainer}
         // dataSource={this.state.dataSource}
         // renderSeparator= {this.ListViewItemSeparator}
-        // renderRow={(rowData) => <Text style={styles.rowViewContainer} 
-        // onPress={this.GetItem.bind(this, rowData.product_description)} >{rowData.product_description}</Text>}        
+        // renderRow={(rowData) => <Text style={styles.rowViewContainer}
+        // onPress={this.GetItem.bind(this, rowData.product_description)} >{rowData.product_description}</Text>}
       />
-    </View>   
+    </View>
     );
   }
 }

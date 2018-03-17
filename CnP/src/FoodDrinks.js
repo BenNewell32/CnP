@@ -22,20 +22,20 @@ let prodImg;
 let prodPrice;
 let sides=[];
 export default class FoodDrinks extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true
     }
   }
-  
-  GetItem (product_description) { 
+
+  GetItem (product_description) {
     Alert.alert(product_description);
   }
- 
+
   componentDidMount() {
- 
+
     return fetch('https://lit-reef-60415.herokuapp.com/products')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -44,7 +44,7 @@ export default class FoodDrinks extends Component {
         this.setState({
           isLoading: false,
           dataSource: ds.cloneWithRows(responseJson),
-        }, 
+        },
         function() {
           console.log('response: ',responseJson)
           products=responseJson;
@@ -54,7 +54,7 @@ export default class FoodDrinks extends Component {
         console.error(error);
       });
   }
- 
+
   ListViewItemSeparator = () => {
     return (
       <View
@@ -75,18 +75,18 @@ export default class FoodDrinks extends Component {
         </View>
       );
     }
- 
+
     return (
       <View style={styles.MainContainer}>
-        <Navbar navigator={this.props.navigator} route='FoodDrinks'/>
+        <Navbar userState={this.props.userState} navigator={this.props.navigator} route='FoodDrinks'/>
         <ListView
           style={styles.NavContainer}
           dataSource={this.state.dataSource}
           renderSeparator= {this.ListViewItemSeparator}
           renderRow=
-            {(rowData) => 
-              <Text 
-                style={styles.rowViewContainer} 
+            {(rowData) =>
+              <Text
+                style={styles.rowViewContainer}
                 onPress={()=>{
                   this.GetItem.bind(this, rowData.product_description)(),
                   prodID=rowData.product_id;
@@ -101,18 +101,18 @@ export default class FoodDrinks extends Component {
                 }}>
                 {rowData.product_description}
               </Text>
-            }        
+            }
         />
-      </View>      
+      </View>
     );
   }
 }
- 
+
 const styles = StyleSheet.create({
- 
+
   MainContainer :{
     justifyContent: 'center',
-    position: 'relative', 
+    position: 'relative',
     flex:1,
   },
   NavContainer :{
@@ -152,7 +152,7 @@ function addToCart(){
     console.error(error);
   });
 
-  // function setUpPostObj(){ 
+  // function setUpPostObj(){
   //   console.log('scoped',currentItem);
   //   $.ajax("/api/clicks", {
   //       type: "get"
@@ -164,7 +164,7 @@ function addToCart(){
   //       }
   //   );
   // }
-  // function buildPostObj(){ 
+  // function buildPostObj(){
   //   product = {
   //       id: currentItem.id,
   //       short_desc: currentItem.short_desc,

@@ -17,10 +17,10 @@ import Register from './Register.js'
 import LogIn from './LogIn.js'
 import Navbar from './Navbar.js'
 import YourOrders from './YourOrders.js'
-import ItemContainer from './components/Cart/ItemContainer' 
-import BasketComponent from './components/Cart/BasketComponent' 
-import Header from './components/Cart/Header' 
-import Footer from './components/Cart/Footer.js' 
+import ItemContainer from './components/Cart/ItemContainer'
+import BasketComponent from './components/Cart/BasketComponent'
+import Header from './components/Cart/Header'
+import Footer from './components/Cart/Footer.js'
 
 export default class YourBill extends Component {
   constructor(props){
@@ -31,20 +31,20 @@ export default class YourBill extends Component {
   render() {
     return (
       <View style={{ flex: 1}}>
-        <Navbar navigator={this.props.navigator} route='YourBill'/>
+        <Navbar userState={this.props.userState} navigator={this.props.navigator} route='YourBill'/>
         <Header />
           <ItemContainer />
           <BasketComponent />
           <Footer />
-          <TouchableOpacity 
+          <TouchableOpacity
             style={{backgroundColor:'yellow'}}
             onPress={
-              () => 
+              () =>
               this.props.navigator.push({
                 title: 'YourOrders',
                 component: YourOrders,
               })
-            }  
+            }
           >
             <Text style={{textAlign: 'center'}}>
               View Previous Orders

@@ -4,11 +4,11 @@ import React, { Component } from 'react'
 import {Icon, Button, Avatar} from 'react-native-elements'
 import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br, SegmentedControlIOS} from 'react-native';
 import Navigation from "./Navigation.js"
-// import ProductContainer from './components/Order/ProductContainer' 
-import BasketComponent from './components/Order/BasketComponent' 
-import Header from './components/Order/Header' 
-import Footer from './components/Order/Footer.js' 
-import Products from './components/Order/Products.js' 
+// import ProductContainer from './components/Order/ProductContainer'
+import BasketComponent from './components/Order/BasketComponent'
+import Header from './components/Order/Header'
+import Footer from './components/Order/Footer.js'
+import Products from './components/Order/Products.js'
 import ModalExample from './components/Order/Modal.js'
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -36,22 +36,22 @@ export default class Drinks extends Component {
   render(){
     return(
       <View style={{flex: 1}}>
-        <Navbar navigator={this.props.navigator} route='Drinks'/>
+        <Navbar userState={this.props.userState} navigator={this.props.navigator} route='Drinks'/>
         <Header />
           <View style={styles.containterStyleP}>
             <Products />
           </View>
           <BasketComponent />
           <Footer />
-          <TouchableOpacity 
+          <TouchableOpacity
             style={{backgroundColor:'yellow'}}
             onPress={
-              () => 
+              () =>
               this.props.navigator.push({
                 title: 'Drinks',
                 component: Drinks,
               })
-            }  
+            }
           >
            </TouchableOpacity>
            </View>

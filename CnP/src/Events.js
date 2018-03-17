@@ -30,19 +30,19 @@ export default class Events extends Component<{}>{
  render()  {
    return (
      <View>
-    <Navbar navigator={this.props.navigator} route='Events'/>
-       <ScrollView 
+    <Navbar userState={this.props.userState} navigator={this.props.navigator} route='Events'/>
+       <ScrollView
        marginTop={50}>
          <EventsComponent
          eventName={'Comedy Show'}
          date={'March 9, 2018\n8:00 PM - 11:00 PM CST'}
          thumbnailImage={require('../public/images/comedyShow.png')}
          bigImage={require('../public/images/comedyShow.png')}
-         description={`Kick off the weekend with a night full of laughter from some of Kansas City's best comedians! 
-Three of our local comedians featured in the KC Comedy Festival will be performing some of their best stand-up! 
-Space is limited so don't wait to secure your seat! 
+         description={`Kick off the weekend with a night full of laughter from some of Kansas City's best comedians!
+Three of our local comedians featured in the KC Comedy Festival will be performing some of their best stand-up!
+Space is limited so don't wait to secure your seat!
 The show starts at 8 pm on the rooftop.
-This event is indoors with food and drinks available from the rooftop. 
+This event is indoors with food and drinks available from the rooftop.
 Must be 21(+).Tickets are $5 each, we will have walk-in space as well.
 Drink Specials:
 $4 wells

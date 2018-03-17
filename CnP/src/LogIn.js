@@ -5,8 +5,9 @@ import {Icon, Button, Avatar} from 'react-native-elements'
 // import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Register from './Register.js';
 import Expo from 'expo';
-import Auth from './components/Auth'
-import Home from '../App.js'
+import Auth from './components/Auth';
+import Home from '../App.js';
+import App from '../App.js';
 
 const id= '1247004652109579';
 let name='Sign In with Facebook';
@@ -68,7 +69,7 @@ export default class LogIn extends Component<{}> {
       fetch('https://lit-reef-60415.herokuapp.com/users')
         .then((result) => result.json())
         .then((resultJSON) => {
-      
+
           //POST user to MySQL (run only if no user found)
           const postUser = () => {
             fetch('https://lit-reef-60415.herokuapp.com/add/user', {
@@ -86,58 +87,70 @@ export default class LogIn extends Component<{}> {
               })
             })
 
-            //Once the new user has been posted, return the data back to the app. 
+            //Once the new user has been posted, return the data back to the app.
             .then((result) => result.json()).then((resultJSON) => {
               console.log("result from post to user table:")
               console.log("id: " + resultJSON[0].id);
               console.log("name: " + resultJSON[0].firstName);
               console.log("email: " + resultJSON[0].email);
               console.log("fbId: " + resultJSON[0].fbId);
-              console.log("img: "+ "JACOB we need to add img to api return");
+              console.log("img: "+ json.picture.data.url);
               this.setState((prevState) => {
                 return {
                   loggedIn: true,
                   username: resultJSON[0].firstName,
-                  img: 'JACOB WE NEED IMG ADDED TO USER POST RETURN',
+                  img: json.picture.data.url,
                   email: resultJSON[0].email,
                   id: resultJSON[0].id
                 }
               })
+              userState = {
+                loggedIn: true,
+                id: this.state.id,
+                name: this.state.username,
+                img: this.state.img,
+                email: this.state.email,
+              }
+              this.props.auth(userState);
             });
           }
-  
-      //Loop through each user in MySQL    
+
+      //Loop through each user in MySQL
       var users = resultJSON;
       var isMatch = false;
       users.forEach(user => {
-        
+
         //if the user exists, update state with users data and liftState
         if(parseInt(json.id) === parseInt(user.fbId)){
           isMatch = true;
+
           this.setState((prevState) => {
             return {
               loggedIn: true,
               username: json.name,
               img: json.picture.data.url,
               email: json.email,
-              id: json.id
+              id: user.id
             }
           })
 
           //Update state with user data
           userState = {
+            loggedIn: true,
             id: this.state.id,
             name: this.state.username,
             img: this.state.img,
             email: this.state.email,
-          } 
+          }
+
+          this.props.auth(userState);
           console.log("User ID to pass accross app: ", userState)
 
           ////////////////////////////////////////////////////
           //JACOB!!
           //lift this state up to the navigatorIOS component//
           //////Lets figure this out first thing tomorrow/////
-          
+
           ////////////////////////////////////////////////////
           // this.props.NavigatorIOS.auth({userState});
 
@@ -152,13 +165,13 @@ export default class LogIn extends Component<{}> {
     else {
       alert("Sorry! Please attempt to log in again.");
     }
-    
+
     //BENS LIFT STATE
-    this.props.navigator.push({
-        title: 'Home',
-        component: Home,
-        passProps: userState
-      })
+    // this.props.navigator.push({
+    //     title: 'Home',
+    //     component: Home,
+    //     passProps: {userState: userState}
+    //   })
   };
 
   render() {
@@ -178,9 +191,13 @@ export default class LogIn extends Component<{}> {
           textStyle={{textAlign:'center'}}
           title={'Return Home'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={ 
-            () => 
-            this.props.navigator.popToTop()
+          onPress={
+            () =>
+            this.props.navigator.push({
+              title: 'Home',
+              component: App,
+              passProps: {userState: userState}
+            })
             }
           buttonStyle={{
             backgroundColor: "#191919",

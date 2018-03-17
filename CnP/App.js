@@ -12,7 +12,7 @@ class Home extends Component<{}> {
   constructor(props){
     super(props);
   }
-  
+
 componentDidMount(){
   return(
   userInfo=this.props.passProps
@@ -41,6 +41,7 @@ componentDidMount(){
             this.props.navigator.push({
               title: 'Order',
               component: Order,
+              passProps: {userState: this.props.userState}
             })
         }
           buttonStyle={{
@@ -56,7 +57,7 @@ componentDidMount(){
         {"\n"}
         {userInfo}
         </Text>
-        
+
         <Button
           textStyle={{textAlign:'center'}}
           title={'Sign In'}
@@ -66,6 +67,7 @@ componentDidMount(){
             this.props.navigator.push({
               title: 'Sign In',
               component: LogIn,
+              passProps: {auth: this.props.auth, userState: this.props.userState}
             })
           }
           buttonStyle={{
@@ -104,19 +106,18 @@ export default class App extends Component<{}> {
   constructor(props){
     super(props);
     this.state = {
-      user: ''
+      user: this.props.userState ? this.props.userState : {loggedIn: false}
     }
   }
   passUser = (userObj) => {
     this.setState({
       user: userObj
     });
-    console.log("app state: " + this.state);
+    console.log("app state: " + JSON.stringify(this.state));
   }
   render() {
     return (
       <NavigatorIOS
-        auth={this.passUser}
         barTintColor='white'
         titleTextColor='#9EBA48'
         navigationBarHidden= {true}
@@ -127,6 +128,7 @@ export default class App extends Component<{}> {
         initialRoute={{
           title: 'Chicken N Pickle',
           component: Home,
+          passProps: {auth: this.passUser, userState: this.state.user}
         }}>
       </NavigatorIOS>
     );

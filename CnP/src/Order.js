@@ -28,11 +28,13 @@ export default class Order extends Component<{}> {
     super(props);
   }
 
-
+  componentDidMount(){
+    console.log(`${JSON.stringify(this.props)} \n^^^^^^^^^^^^^^^^^\nthis is zee props for zee orderz`);
+  }
   render() {
     return (
       <View backgroundColor='white'>
-        <Navbar navigator={this.props.navigator}/>
+        <Navbar userState={this.props.userState} navigator={this.props.navigator}/>
         <ScrollView
           marginTop={40}
         >
@@ -43,6 +45,7 @@ export default class Order extends Component<{}> {
                 this.props.navigator.push({
                   title: 'FoodDrinks',
                   component: FoodDrinks,
+                  passProps: {userState: this.props.userState}
                 })}>
             <ImageBackground source={require('../public/images/food.jpg')} style={styles.image} resizeMode='cover'>
               <View style={{
@@ -52,7 +55,7 @@ export default class Order extends Component<{}> {
                 alignSelf: 'stretch',
                 backgroundColor: 'rgba(0,0,0,0.5)'
               }}>
-                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Food</Text>
+                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>{this.props.userState.loggedIn ? this.props.userState.id : 'Nobody signed in yo'}</Text>
               </View>
             </ImageBackground>
           </TouchableOpacity>
@@ -63,6 +66,7 @@ export default class Order extends Component<{}> {
                 this.props.navigator.push({
                   title: 'Drinks',
                   component: Drinks,
+                  passProps: {userState: this.props.userState}
                 })}>
             <ImageBackground source={require('../public/images/beer.jpg')} style={styles.image} resizeMode='cover'>
               <View style={{
@@ -83,6 +87,7 @@ export default class Order extends Component<{}> {
                 this.props.navigator.push({
                   title: 'Pickleball',
                   component: Pickleball,
+                  passProps: {userState: this.props.userState}
                 })}>
             <ImageBackground source={require('../public/images/court.jpg')} style={styles.image} resizeMode='cover'>
               <View style={{
@@ -103,6 +108,7 @@ export default class Order extends Component<{}> {
                 this.props.navigator.push({
                   title: 'Events',
                   component: Events,
+                  passProps: {userState: this.props.userState}
                 })}>
             <ImageBackground source={require('../public/images/events.jpg')} style={styles.image} resizeMode='cover'>
               <View style={{
@@ -123,6 +129,7 @@ export default class Order extends Component<{}> {
                 this.props.navigator.push({
                   title: 'MapPage',
                   component: MapPage,
+                  passProps: {userState: this.props.userState}
                 })}>
             <ImageBackground source={require('../public/images/contactus.jpg')} style={styles.image} resizeMode='cover'>
               <View style={{
@@ -140,7 +147,7 @@ export default class Order extends Component<{}> {
       </View>
     );
   }
-} 
+}
 
 
 const styles = StyleSheet.create({

@@ -24,6 +24,10 @@ export default class Navbar extends Component<{}> {
 
   }
 
+  ComponentDidMount(){
+    console.log(`${this.props} \n^^\n here is zee nav props`)
+  }
+
     render() {
       return (
 <View backgroundColor='white'>
@@ -33,6 +37,7 @@ export default class Navbar extends Component<{}> {
             <Text>
             </Text>
             <Text>
+            {this.props.userState.id}
             </Text>
             <Image
               style={{alignItems: 'center', height:'40%',width: '40%'}}
@@ -44,7 +49,7 @@ export default class Navbar extends Component<{}> {
         <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row', backgroundColor: '#9EBA48'}}>
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <TouchableOpacity
-            
+
             underlayColor={'gray'}>
             <Icon
               name='navicon'
@@ -53,11 +58,12 @@ export default class Navbar extends Component<{}> {
               underlayColor='#9EBA48'
               size={40}
               onPress={
-                () => 
-              
+                () =>
+
                 this.props.navigator.push({
                   title: 'Order',
                   component: Order,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />
@@ -71,10 +77,11 @@ export default class Navbar extends Component<{}> {
               underlayColor='#9EBA48'
               size={40}
               onPress={
-                () => 
+                () =>
                 this.props.navigator.push({
                   title: 'LogIn',
                   component: LogIn,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />
@@ -87,25 +94,27 @@ export default class Navbar extends Component<{}> {
                 underlayColor='#9EBA48'
               size={40}
               onPress={
-                () => 
+                () =>
                 this.props.navigator.push({
                   title: 'Your Bill',
                   component: YourBill,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />
           </View>
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
-            <Icon 
+            <Icon
               name='local-dining'
               color={(this.props.route == "FoodDrinks" ?  'white' : 'black' )}
               underlayColor='#9EBA48'
               size={30}
               onPress={
-                () => 
+                () =>
                 this.props.navigator.push({
                   title: 'Food and Drinks',
                   component: FoodDrinks,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />
@@ -114,13 +123,14 @@ export default class Navbar extends Component<{}> {
             <Icon
               name='local-bar'
               color={(this.props.route == "Drinks" ?  'white' : 'black' )}
-              underlayColor='#9EBA48' 
+              underlayColor='#9EBA48'
               size={30}
               onPress={
-                () => 
+                () =>
                 this.props.navigator.push({
                   title: 'Drinks',
                   component: Drinks,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />
@@ -133,10 +143,11 @@ export default class Navbar extends Component<{}> {
               underlayColor='#9EBA48'
               size={40}
               onPress={
-                () => 
+                () =>
                 this.props.navigator.push({
                   title: 'Pickleball',
                   component: Pickleball,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />
@@ -153,7 +164,8 @@ export default class Navbar extends Component<{}> {
                 // this.getCurrentRoute(),
                 this.props.navigator.push({
                   title: 'Events',
-                  component: Events
+                  component: Events,
+                  passProps: {userState: this.props.userState}
                 })
                 console.log(this.props.route);
               }
@@ -169,10 +181,11 @@ export default class Navbar extends Component<{}> {
               underlayColor='#9EBA48'
               size={40}
               onPress={
-                () => 
+                () =>
                 this.props.navigator.push({
                   title: 'AboutContact',
                   component: AboutContact,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />
@@ -185,10 +198,11 @@ export default class Navbar extends Component<{}> {
               underlayColor='#9EBA48'
               size={40}
               onPress={
-                () => 
+                () =>
                 this.props.navigator.push({
                   title: 'MapPage',
                   component: MapPage,
+                  passProps: {userState: this.props.userState}
                 })
               }
             />

@@ -18,20 +18,20 @@ import Navbar from './Navbar.js'
 
 let orders = [];
 export default class YourOrders extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true
     }
   }
-  
-  GetItem (product_description) { 
+
+  GetItem (product_description) {
     Alert.alert(product_description);
   }
- 
+
   componentDidMount() {
- 
+
     return fetch('https://lit-reef-60415.herokuapp.com/orders')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -40,7 +40,7 @@ export default class YourOrders extends Component {
         this.setState({
           isLoading: false,
           dataSource: ds.cloneWithRows(responseJson),
-        }, 
+        },
         function() {
           console.log('response: ',responseJson)
           orders=responseJson;
@@ -50,7 +50,7 @@ export default class YourOrders extends Component {
         console.error(error);
       });
   }
- 
+
   ListViewItemSeparator = () => {
     return (
       <View
@@ -71,18 +71,18 @@ export default class YourOrders extends Component {
         </View>
       );
     }
- 
+
     return (
       <View style={styles.MainContainer}>
-        <Navbar navigator={this.props.navigator}/>
+        <Navbar userState={this.props.userState} navigator={this.props.navigator}/>
         <ListView
           style={styles.NavContainer}
           dataSource={this.state.dataSource}
           renderSeparator= {this.ListViewItemSeparator}
           renderRow=
-            {(rowData) => 
-              <Text 
-                style={styles.rowViewContainer} 
+            {(rowData) =>
+              <Text
+                style={styles.rowViewContainer}
                 onPress={()=>{
                   this.GetItem.bind(this, rowData.id)()
                   // prodID=rowData.product_id;
@@ -96,21 +96,21 @@ export default class YourOrders extends Component {
                 }}>
                 {rowData.id}
               </Text>
-            }        
+            }
         />
         <Text>
           Pulling from Orders API :)
         </Text>
-      </View>      
+      </View>
     );
   }
 }
- 
+
 const styles = StyleSheet.create({
- 
+
   MainContainer :{
     justifyContent: 'center',
-    position: 'relative', 
+    position: 'relative',
     flex:1,
   },
   NavContainer :{

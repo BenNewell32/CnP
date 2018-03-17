@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import {Icon, Button, Avatar, Header} from 'react-native-elements'
 import {Linking, StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, ScrollView, Dimensions, Br} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from "react-native-maps"
- 
+
 import Navigation from "./Navigation.js"
 import Home from '../App.js'
 import YourBill from './YourBill.js'
@@ -34,11 +34,11 @@ export default class MapPage extends Component<{}> {
     return (
       <View>
         <WatchLocation/>
-        <Navbar navigator={this.props.navigator} route='MapPage'/>
+        <Navbar userState={this.props.userState} navigator={this.props.navigator} route='MapPage'/>
       </View>
     );
   }
-} 
+}
 
 
 // const styles = StyleSheet.create({
