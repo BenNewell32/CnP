@@ -6,9 +6,6 @@ import Products from './Products';
 const Header = () => {
   return (
     <View style={styles.headerStyle}>
-    <TouchableOpacity>
-      <Icon name="ios-close" size={35} color="#a8a9ad" onPress={() => this.props.nav} />
-      </TouchableOpacity>
       <Text style={{ fontSize: 18 }}>BEER</Text>
       <TouchableOpacity>
         <Text>Canned</Text>

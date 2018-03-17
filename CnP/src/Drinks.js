@@ -31,7 +31,13 @@ import Navbar from './Navbar.js'
 // let prodPrice;
 // let sides=[];
 
+
 export default class Drinks extends Component {
+
+
+  
+
+
 
   render(){
     return(
@@ -43,7 +49,7 @@ export default class Drinks extends Component {
           </View>
           <BasketComponent />
           <Footer />
-          <TouchableOpacity 
+          {/* <TouchableOpacity 
             style={{backgroundColor:'yellow'}}
             onPress={
               () => 
@@ -53,7 +59,7 @@ export default class Drinks extends Component {
               })
             }  
           >
-           </TouchableOpacity>
+           </TouchableOpacity> */}
            </View>
     );
   }

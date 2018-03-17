@@ -13,7 +13,9 @@ let productsData = [];
 
 console.log("raw :", productsData);
 
-class Products extends Component {
+
+
+export default class Products extends Component {
 
   constructor(props) {
     super(props);
@@ -22,9 +24,7 @@ class Products extends Component {
     }
   }
   
-  GetItem (product_description) { 
-    Alert.alert(product_description);
-  }
+
   componentDidMount() {
     return fetch('https://lit-reef-60415.herokuapp.com/drinks')
       .then((response) => response.json())
@@ -95,8 +95,14 @@ class Products extends Component {
     </View>);
   }
 
-
   render() {
+    if(this.state.isLoading){
+      return(
+        <View style={{flex:1, paddingTop: 10}}>
+        <ActivityIndicator />
+        </View>
+      )
+    }
     return (
       <FlatList
         data={productsData}
@@ -106,6 +112,7 @@ class Products extends Component {
     );
   }
 }
+  
 
 const styles = {
   containerStyle: {
@@ -148,4 +155,4 @@ const styles = {
   }
 };
 
-export default Products;
+AppRegistry.registerComponent('Products', () => Products);

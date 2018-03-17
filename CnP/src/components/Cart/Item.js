@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Image, View, TouchableHighlight, TouchableOpacity, FlatList, Text, ImageBackground, SectionList, AppRegistry,  ActivityIndicator, ListView, Alert, TabBarIOS, AlertIndicatorIOS, ActivityIndicatorIOS, AlertIOS,Br} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-// const image1 = require('../../../public/images/chicken.jpg');
-// const image2 = require('../../../public/images/chicken.jpg');
-// const image3 = require('../../../public/images/chicken.jpg');
-// const image4 = require('../../../public/images/chicken.jpg');
-// const image5 = require('../../../public/images/chicken.jpg');
+
 let cart;
 let cartData = [
    ]
@@ -21,10 +17,13 @@ class Item extends Component {
       isLoading: true
     }
   }
+  GetItem (product_description) { 
+    Alert.alert(product_description);
+  }
 
   componentDidMount() {
 
-    return fetch('https://lit-reef-60415.herokuapp.com/order_details')
+    return fetch('https://lit-reef-60415.herokuapp.com/food/rotchx')
       .then((response) => response.json())
       .then((responseJson) => {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2,
@@ -34,16 +33,28 @@ class Item extends Component {
           dataSource: ds.cloneWithRows(responseJson),
         },
         function() {
+          console.log('response: ', responseJson)
           cart=responseJson;
+        
 
-          console.log('cart: ', cart);
-          cartData=cart;
-          console.log('data:', cartData);
+          // console.log('cart: ', cart);
+          // cartData=cart;
+          // console.log('data:', cartData);
         });
       })
       .catch((error) => {
         console.error(error);
       });
+    // function getRotChx() {
+    //   return fetch('https://lit-reef-60415.herokuapp.com/food/rotchx')
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     return responseJson.product_description;
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //     });
+    //   }
   }
 
 
@@ -63,15 +74,15 @@ class Item extends Component {
       <Text style={{width: '40%'}}>{item.product_description}</Text>
 
       <View style={counterStyle}>
-        <Icon.Button
+        {/* <Icon.Button
           name="ios-remove"
           size={25}
           color='#fff'
           backgroundColor='#fff'
           style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
-        />
-
+        /> */}
+        <Text>{item.subcategory}</Text>
         <Text>${item.cost}.00</Text>
 
         <Icon.Button
@@ -81,6 +92,11 @@ class Item extends Component {
           backgroundColor='#fff'
           style={{ borderRadius: 15, backgroundColor: '#bbb', height: 30, width: 30 }}
           iconStyle={{ marginRight: 0 }}
+          onPress={
+            () => this.props.something.push({
+              
+            })
+          }
         />
 
       </View>
@@ -91,6 +107,13 @@ class Item extends Component {
 
 
   render() {
+    if(this.state.isLoading){
+      return(
+        <View style={{flex:1, paddingTop: 10}}>
+        <ActivityIndicator />
+        </View>
+      )
+    }
     return (
       <FlatList
         data={cartData}
