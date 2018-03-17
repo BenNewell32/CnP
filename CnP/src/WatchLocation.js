@@ -64,7 +64,7 @@ class WatchLocation extends Component {
 
   render() {
     return (
-      <View style={{alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{alignItems: 'center', justifyContent: 'center', height: 0, width: 0}}>
         {/* <Text style={{color: 'white'}}>
           Latitude:
         </Text> */}

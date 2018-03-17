@@ -43,7 +43,8 @@ export default class Pickleball extends Component<{}> {
         <Text>$5 per person</Text>
         <Text> $3 for a paddle</Text>
         <Text>$3 for a pickleball</Text>
-        <Text>Open Play is on Outdoor Courts 1 {'&'} 2. To purchase Open Play, please go to the Pickleball Counter at the Main Bar.</Text>
+        <Text>Open Play is on Outdoor Courts 1 {'&'} 2. </Text>
+        <Text>To purchase Open Play, please go to the Pickleball Counter at the Main Bar.</Text>
         <Text></Text>
         </View>
         <Text style={styles.headerTwo}>Book A Court</Text>
@@ -53,6 +54,15 @@ export default class Pickleball extends Component<{}> {
         <Text>     5pm-close- $40/hr</Text>
         <Text>Weekends 8am-close- $40/hr</Text>
         </View>
+        <View style={{flex: 2, flexDirection: 'row'}}>
+        <Image
+          style={{height: 300, alignContent: 'center',justifyContent:'center', flexDirection: 'row'}}
+          source={require('../public/images/indoorcourt.png')}
+
+        />
+        
+        </View>
+        <View style={styles.buttonContainer}>
         <Button
               textStyle={{
                 alignContent:'center',
@@ -84,9 +94,10 @@ export default class Pickleball extends Component<{}> {
                 margin: 5
               }}
               onPress={() =>
-                Linking.openURL('https://www.planyo.com/booking.php?mode=reserve&calendar=34774&resource_id=106374')
+                Linking.openURL('https://www.planyo.com/booking.php?mode=reserve&calendar=34774&resource_id=106375')
               }
               />
+              </View>
         </View>
     </View>
     );
@@ -106,11 +117,16 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       justifyContent: 'center'
     },
+    buttonContainer: {
+      margin: 15,
+      marginBottom: 10,
+    },
     // Header: {
     // fontSize: 22,
     // flex: 2,
     //  elevation: 2,
-    //  marginTop: 25,
+    //  marginTop: 25
+
     // //  flexDirection: 'row',
     //  justifyContent: 'space-between',
     //  alignItems: 'center',
@@ -122,12 +138,16 @@ const styles = StyleSheet.create({
       alignContent: 'center',
       margin: 5,
       alignItems: 'center',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      textStyle: 'center',
+      textAlign: 'center'
+      
     },
     rates: {
       alignContent: 'center',
       alignItems: 'center',
       margin: 2,
+      textAlign: 'center'
     }
 });
 
