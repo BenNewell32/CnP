@@ -6,7 +6,7 @@ import Order from './src/Order.js';
 import LogIn from './src/LogIn.js';
 import Auth from './src/components/Auth.js'
 
-let userInfo="Jacob... I feel like I'm close";
+let userInfo="";
 
 class Home extends Component<{}> {
   constructor(props){

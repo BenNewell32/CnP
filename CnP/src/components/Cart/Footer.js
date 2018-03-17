@@ -27,6 +27,9 @@ class Footer extends React.Component {
               </TouchableOpacity>
             </View>
           </View>
+          <Text>
+           djdakj
+            </Text>
         </View>
       );
     }

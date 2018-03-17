@@ -55,7 +55,7 @@ export default class Order extends Component<{}> {
                 alignSelf: 'stretch',
                 backgroundColor: 'rgba(0,0,0,0.5)'
               }}>
-                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>{this.props.userState.loggedIn ? this.props.userState.id : 'Nobody signed in yo'}</Text>
+                <Text style={[styles.textStyle, { backgroundColor: 'transparent' }]}>Food</Text>
               </View>
             </ImageBackground>
           </TouchableOpacity>

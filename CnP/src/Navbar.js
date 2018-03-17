@@ -36,9 +36,6 @@ export default class Navbar extends Component<{}> {
           <View style={{alignItems: 'center', width: '100%', height: 60, backgroundColor: '#9EBA48'}} >
             <Text>
             </Text>
-            <Text>
-            {this.props.userState.id}
-            </Text>
             <Image
               style={{alignItems: 'center', height:'40%',width: '40%'}}
               source={require('../public/images/cnpheader.png')}
