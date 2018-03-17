@@ -127,8 +127,8 @@ export default class Order extends Component<{}> {
             onPress={
               () =>
                 this.props.navigator.push({
-                  title: 'MapPage',
-                  component: MapPage,
+                  title: 'AboutContact',
+                  component: AboutContact,
                   passProps: {userState: this.props.userState}
                 })}>
             <ImageBackground source={require('../public/images/contactus.jpg')} style={styles.image} resizeMode='cover'>

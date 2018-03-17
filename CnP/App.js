@@ -55,12 +55,11 @@ componentDidMount(){
         />
         <Text>
         {"\n"}
-        {userInfo}
         </Text>
 
         <Button
           textStyle={{textAlign:'center'}}
-          title={'Sign In'}
+          title={this.props.userState.loggedIn ? '' : 'Sign In'}
           buttonStyle={{backgroundColor: '#9EBA48'}}
           onPress={
             () =>
@@ -71,7 +70,7 @@ componentDidMount(){
             })
           }
           buttonStyle={{
-            backgroundColor: "#191919",
+            backgroundColor: this.props.userState.loggedIn ? '#9EBA48' : '#191919',
             width: 300,
             height: 45,
             borderColor: "transparent",

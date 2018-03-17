@@ -85,11 +85,11 @@ export default class Navbar extends Component<{}> {
           </View>
           <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
-              name='credit-card'
-              type='evilicon'
+              name='ios-cart'
+              type='ionicon'
                 color={(this.props.route == "YourBill" ?  'white' : 'black' )}
                 underlayColor='#9EBA48'
-              size={40}
+              size={30}
               onPress={
                 () =>
                 this.props.navigator.push({
@@ -187,7 +187,7 @@ export default class Navbar extends Component<{}> {
               }
             />
           </View>
-          <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
+         {/* <View style={{width: 45, height: 40, backgroundColor: '#9EBA48'}}>
             <Icon
               name='location'
               type='evilicon'
@@ -203,7 +203,7 @@ export default class Navbar extends Component<{}> {
                 })
               }
             />
-          </View>
+          </View> */}
           <View style={{width: 20, height: 40, backgroundColor: '#9EBA48'}}>
           </View>
         </View>

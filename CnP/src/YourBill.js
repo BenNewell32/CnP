@@ -35,7 +35,7 @@ export default class YourBill extends Component {
         <Header />
           <ItemContainer userState={this.props.userState} />
           <BasketComponent userState={this.props.userState} />
-          <Footer userState={this.props.userState} />
+          <Footer navigator={this.props.navigator} userState={this.props.userState} />
           {/* <TouchableOpacity
             style={{backgroundColor:'yellow'}}
             onPress={

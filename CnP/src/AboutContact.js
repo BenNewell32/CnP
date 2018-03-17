@@ -29,8 +29,8 @@ export default class AboutContact extends Component<{}> {
     return (
       <View style={styles.MainContainer}>
          <Navbar userState={this.props.userState} navigator={this.props.navigator} route='AboutContact'/>
-        
-           
+
+
         <View style={{marginTop: 50, flexDirection: 'column', flex: 1}} >
         <Text style={{fontSize:25, textAlign: 'center'}}>VISIT US</Text>
         <MapView
@@ -45,7 +45,7 @@ export default class AboutContact extends Component<{}> {
           >
           </MapView>
           </View>
-          
+
           <View style={{flexDirection: 'row'}}>
 
         <Button
@@ -65,7 +65,7 @@ export default class AboutContact extends Component<{}> {
             Linking.openURL('https://maps.google.com?q=Chicken+N+Pickle+1761+Burlington+St.+North+Kansas+City,+MO+64116')
           }
           />
-         
+
           <Button
             textStyle={{
               textAlign:'left',
@@ -94,7 +94,7 @@ export default class AboutContact extends Component<{}> {
               borderColor: "transparent",
               borderWidth: 0,
               margin: 2,
-            
+
               flexDirection: 'row'
             }}
             onPress={() =>

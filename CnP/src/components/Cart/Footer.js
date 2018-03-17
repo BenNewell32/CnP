@@ -2,12 +2,32 @@ import React from 'react';
 import { Text, View ,TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TotalComp from './TotalComponent';
+import Order from '../../Order';
 
 class Footer extends React.Component {
   constructor(props){
     super(props)
   }
 
+  deleteItems = (id) => {
+    fetch(`https://lit-reef-60415.herokuapp.com/delete/cart`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: id
+      })
+    }).then((result) => this.props.navigator.push({
+              title: 'Order',
+              component: Order,
+              passProps: {userState: this.props.userState}
+            }))
+    .catch((error) => {
+      console.error(error);
+    });
+  }
 
   render(){
       return (
@@ -15,21 +35,26 @@ class Footer extends React.Component {
           <TotalComp userState={this.props.userState} />
           <View style={styles.buttonContainerStyle}>
             <View style={styles.closeButtonStyle}>
-            <TouchableOpacity>
-              <Text style={{ color: '#fff' }}>Close</Text>
+            <TouchableOpacity
+              onPress={()=>{
+                  this.deleteItems(this.props.userState.id);
+                }}
+            >
+              <Text style={{ color: '#fff' }}>Clear Cart</Text>
             </TouchableOpacity>
 
             </View>
 
             <View style={styles.checkoutButtonStyle}>
-              <TouchableOpacity>
-              <Text style={{ color: '#fff' }}>Go to checkout</Text>
+              <TouchableOpacity
+                onPress={()=>{
+                  this.deleteItems(this.props.userState.id);
+                }}
+              >
+              <Text style={{ color: '#fff' }}>Complete Purchase</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <Text>
-           djdakj
-            </Text>
         </View>
       );
     }
@@ -58,8 +83,8 @@ const styles = {
   checkoutButtonStyle: {
     backgroundColor: '#9EBA48',
     padding: 10,
-    paddingRight: 60,
-    paddingLeft: 60,
+    paddingRight: 40,
+    paddingLeft: 40,
     borderRadius: 3,
   }
 };

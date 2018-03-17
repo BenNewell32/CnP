@@ -88,6 +88,11 @@ class Item extends Component {
 
 
   render() {
+    if(this.state.isLoading){
+      return (
+          <ActivityIndicator />
+        )
+    }
     return (
       <FlatList
         data={cartData}

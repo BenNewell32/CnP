@@ -187,6 +187,24 @@ export default class LogIn extends Component<{}> {
           title={''}
           buttonStyle={{backgroundColor: '#9EBA48'}}
         />
+        <Auth isLoggedIn={this.state.loggedIn}username={this.state.username} id={this.state.id}/>
+        <Button
+          textStyle={{textAlign:'center'}}
+          title={name}
+          buttonStyle={{backgroundColor: '#9EBA48'}}
+          onPress={() => this.login()}
+          buttonStyle={{
+            backgroundColor: this.state.loggedIn || this.props.userState.loggedIn ? '#9EBA48' : '#4267B2',
+            width: 300,
+            height: 45,
+            borderColor: "transparent",
+            borderWidth: 0,
+            borderRadius: 5
+          }}
+        />
+        <Text>
+        {"\n"}
+        </Text>
         <Button
           textStyle={{textAlign:'center'}}
           title={'Return Home'}
@@ -201,24 +219,6 @@ export default class LogIn extends Component<{}> {
             }
           buttonStyle={{
             backgroundColor: "#191919",
-            width: 300,
-            height: 45,
-            borderColor: "transparent",
-            borderWidth: 0,
-            borderRadius: 5
-          }}
-        />
-        <Text>
-        {"\n"}
-        </Text>
-        <Auth isLoggedIn={this.state.loggedIn}username={this.state.username} id={this.state.id}/>
-        <Button
-          textStyle={{textAlign:'center'}}
-          title={name}
-          buttonStyle={{backgroundColor: '#9EBA48'}}
-          onPress={() => this.login()}
-          buttonStyle={{
-            backgroundColor: "#4267B2",
             width: 300,
             height: 45,
             borderColor: "transparent",

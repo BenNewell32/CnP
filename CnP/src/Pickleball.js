@@ -60,7 +60,7 @@ export default class Pickleball extends Component<{}> {
           source={require('../public/images/indoorcourt.png')}
 
         />
-        
+
         </View>
         <View style={styles.buttonContainer}>
         <Button
@@ -139,9 +139,8 @@ const styles = StyleSheet.create({
       margin: 5,
       alignItems: 'center',
       justifyContent: 'space-between',
-      textStyle: 'center',
       textAlign: 'center'
-      
+
     },
     rates: {
       alignContent: 'center',
